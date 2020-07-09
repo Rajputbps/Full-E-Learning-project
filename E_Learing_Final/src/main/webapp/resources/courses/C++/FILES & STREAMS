@@ -1,0 +1,132 @@
+   <h3><b>FILES AND STREAMS</b></h3>
+   <ul>
+   
+      <li>So far, we have been using the iostream standard library, which provides cin and cout methods for reading from standard input and writing to standard output respectively.</li>
+      <li>This tutorial will teach you how to read and write from a file. This requires another standard C++ library called fstream, which defines three new data types –</li>
+   </ul>
+   <ol>
+      <li>ofstream<br>
+      This data type represents the output file stream and is used to create files and to write information to files.</li>
+      <li>ifstream<br>
+      This data type represents the input file stream and is used to read information from files.	</li>
+      <li>fstream<br>
+      This data type represents the file stream generally, and has the capabilities of both ofstream and ifstream which means it can create files, write information to files, and read information from files.</li>
+   </ol>
+   <p>To perform file processing in C++, header files <iostream> and <fstream> must be included in your C++ source file.<br><br>
+      <b>Opening a File</b></p>
+         <ul>
+      <li>A file must be opened before you can read from it or write to it. Either ofstream or fstream object may be used to open a file for writing. And ifstream object is used to open a file for reading purpose only.</li>
+      <li>Following is the standard syntax for open() function, which is a member of fstream, ifstream, and ofstream objects.</li>
+   </ul>
+   
+   <p>&nbsp;&nbsp; &nbsp;&nbsp; void open(const char *filename, ios::openmode mode);<br><br>
+   Here, the first argument specifies the name and location of the file to be opened and the second argument of the open() member function defines the mode in which the file should be opened.	</p>
+   <ol>
+      <li>ios::app<br>
+      Append mode. All output to that file to be appended to the end.</li>
+   
+      <li>ios::ate<br>
+      Open a file for output and move the read/write control to the end of the file.</li>
+   
+      <li>ios::in<br>
+      Open a file for reading.</li>
+   
+      <li>ios::out<br>
+      Open a file for writing.</li>
+   
+      <li>ios::trunk<br>
+      If the file already exists, its contents will be truncated before opening the file.</li>
+   </ol>
+   <p>You can combine two or more of these values by ORing them together. For example if you want to open a file in write mode and want to truncate it in case that already exists, following will be the syntax -</p>
+   <div class="syntext">
+   ofstream outfile;<br>
+   outfile.open("file.dat", ios::out | ios::trunc );<br>
+   &nbsp;&nbsp; Similar way, you can open a file for reading and writing purpose as follows -<br>
+   fstream  afile;<br>
+   afile.open("file.dat", ios::out | ios::in );<br>
+   </div>
+   <p><b>Closing a File</b>
+   <ul>
+      <li>When a C++ program terminates it automatically flushes all the streams, release all the allocated memory and close all the opened files. But it is always a good practice that a programmer should close all the opened files before program termination.</li>
+      <li>Following is the standard syntax for close() function, which is a member of fstream, ifstream, and ofstream objects.<br><br>
+    <div class="syntext">void close();</div></li>
+   </ul>
+   
+   <p><b>Writing to a File</b>
+   <ul>
+   <li>While doing C++ programming, you write information to a file from your program using the stream insertion operator (<<) just as you use that operator to output information to the screen. The only difference is that you use an ofstream or fstream object instead of the cout object.</li>
+   </ul>
+   <p><b>Reading from a File</b>
+   <ul>
+      <li>You read information from a file into your program using the stream extraction operator (>>) just as you use that operator to input information from the keyboard. The only difference is that you use an ifstream or fstream object instead of the cin object.</li>
+      </ul>
+   <p><b>Read and Write Example</b><br><br>
+   Following is the C++ program which opens a file in reading and writing mode. After writing information entered by the user to a file named afile.dat, the program reads information from the file and outputs it onto the screen -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+   #include &#60;fstream&#62;<br>
+   #include &#60;iostream&#62;<br>
+   using namespace std;<br>
+    int main () {<br>
+    &nbsp;&nbsp;   char data[100];<br>
+     &nbsp;&nbsp;  // open a file in write mode.<br>
+    &nbsp;&nbsp;   ofstream outfile;<br>
+    &nbsp;&nbsp;   outfile.open("afile.dat");<br>
+    &nbsp;&nbsp;   cout << "Writing to the file" << endl;<br>
+    &nbsp;&nbsp;   cout << "Enter your name: "; <br>
+    &nbsp;&nbsp;   cin.getline(data, 100);<br>
+    &nbsp;&nbsp;   // write inputted data into the file.<br>
+    &nbsp;&nbsp;   outfile << data << endl;<br>
+    &nbsp;&nbsp;   cout << "Enter your age: "; <br>
+    &nbsp;&nbsp;   cin >> data;<br>
+    &nbsp;&nbsp;   cin.ignore();<br>
+    &nbsp;&nbsp;   // again write inputted data into the file.<br>
+    &nbsp;&nbsp;   outfile << data << endl;<br>
+    &nbsp;&nbsp;   // close the opened file.<br>
+    &nbsp;&nbsp;   outfile.close();<br>
+    &nbsp;&nbsp;   // open a file in read mode.<br>
+    &nbsp;&nbsp;   ifstream infile;<br> 
+    &nbsp;&nbsp;   infile.open("afile.dat");<br> 
+    &nbsp;&nbsp;    cout << "Reading from the file" << endl; <br>
+    &nbsp;&nbsp;   infile >> data; <br>
+    &nbsp;&nbsp;   // write the data at the screen.<br>
+    &nbsp;&nbsp;   cout << data << endl;<br>
+    &nbsp;&nbsp;   // again read the data from the file and display it.<br>
+    &nbsp;&nbsp;   infile >> data; <br>
+    &nbsp;&nbsp;   cout << data << endl; <br>
+    &nbsp;&nbsp;   // close the opened file.<br>
+    &nbsp;&nbsp;   infile.close();<br>
+    &nbsp;&nbsp;   return 0;<br>
+   }
+   </div>
+   <p>When the above code is compiled and executed, it produces the following sample input and output –</p>
+   <div class="shadow p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Writing to the file<br>
+   Enter your name: Zara<br>
+   Enter your age: 9<br>
+   Reading from the file<br>
+   Zara<br>
+   9
+   </div>
+   <p>Above examples make use of additional functions from cin object, like getline() function to read the line from outside and ignore() function to ignore the extra characters left by previous read statement.</p>
+   
+   <p><b>File Position Pointers</b>
+   <ul>
+      <li>Both istream and ostream provide member functions for repositioning the file-position pointer. These member functions are seekg ("seek get") for istream and seekp ("seek put") for ostream.</li>
+      <li>The argument to seekg and seekp normally is a long integer. A second argument can be specified to indicate the seek direction. The seek direction can be ios::beg (the default) for positioning relative to the beginning of a stream, ios::cur for positioning relative to the current position in a stream or ios::end for positioning relative to the end of a stream.</li>
+      <li>The file-position pointer is an integer value that specifies the location in the file as a number of bytes from the file's starting location. Some examples of positioning the "get" file-position pointer are -</li>
+   </ul></p>
+   <div class="syntext">
+   
+   // position to the nth byte of fileObject (assumes ios::beg)<br>
+   fileObject.seekg( n );<br>
+   // position n bytes forward in fileObject<br>
+   fileObject.seekg( n, ios::cur );<br>
+   // position n bytes back from end of fileObject<br>
+   fileObject.seekg( n, ios::end );<br>
+   // position at end of fileObject<br>
+   fileObject.seekg( 0, ios::end );<br>
+   <div>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

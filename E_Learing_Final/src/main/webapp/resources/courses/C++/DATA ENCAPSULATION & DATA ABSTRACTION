@@ -1,0 +1,160 @@
+
+    <h3><b>DATA ENCAPSULATION</b></h3>
+    <ul>
+        <li>All C++ programs are composed of the following two fundamental elements -<br>
+            &nbsp;&nbsp;1. Program statements (code) - This is the part of a program that performs actions and they are called functions.<br>
+            &nbsp;&nbsp;2. Program data - The data is the information of the program which gets affected by the program functions.</li>
+         <li>Encapsulation is an Object Oriented Programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse. Data encapsulation led to the important OOP concept of data hiding.</li>
+         <li>Data encapsulation is a mechanism of bundling the data, and the functions that use them and data abstraction is a mechanism of exposing only the interfaces and hiding the implementation details from the user.</li>
+         <li>C++ supports the properties of encapsulation and data hiding through the creation of user-defined types, called classes. We already have studied that a class can contain private, protected and public members. By default, all items defined in a class are private. </li>
+          </ul>
+    <p>For example -<p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    class Box {<br>
+       &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;   double getVolume(void) {<br>
+       &nbsp;&nbsp;      return length * breadth * height;<br>
+          }<br>
+       private:<br>
+       &nbsp;&nbsp;   double length;      // Length of a box<br>
+    &nbsp;&nbsp;      double breadth;     // Breadth of a box<br>
+    &nbsp;&nbsp;      double height;      // Height of a box<br>
+    };
+    </div>
+    <p>The variables length, breadth, and height are private. This means that they can be accessed only by other members of the Box class, and not by any other part of your program. This is one way encapsulation is achieved.<br><br>
+    To make parts of a class public (i.e., accessible to other parts of your program), you must declare them after the public keyword. All variables or functions defined after the public specifier are accessible by all other functions in your program.<br><br>
+    Making one class a friend of another exposes the implementation details and reduces encapsulation. The ideal is to keep as many of the details of each class hidden from all other classes as possible.</p>
+    
+        <p><b>Data Encapsulation Example -</b><br><br>
+    Any C++ program where you implement a class with public and private members is an example of data encapsulation and data abstraction. Consider the following example -</p>
+     
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+    
+    using namespace std;<br>
+    class Adder {<br>
+       &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;   // constructor<br>
+       &nbsp;&nbsp;   Adder(int i = 0) {<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;      total = i;<br>
+          }<br>
+          // interface to outside world<br>
+          void addNum(int number) {<br>
+             &nbsp;&nbsp;total += number;<br>
+          }      <br>
+          // interface to outside world<br>
+          int getTotal() {<br>
+           &nbsp;&nbsp;  return total;<br>
+          };<br>
+        private:<br>
+         &nbsp;&nbsp; // hidden data from outside world<br>
+         &nbsp;&nbsp; int total;<br>
+    };<br>
+    int main() {<br>
+       &nbsp;&nbsp;Adder a;<br>
+       &nbsp;&nbsp;a.addNum(10);<br>
+    &nbsp;&nbsp;   a.addNum(20);<br>
+    &nbsp;&nbsp;   a.addNum(30);<br>
+    &nbsp;&nbsp;   cout << "Total " << a.getTotal() <<endl;<br>
+    &nbsp;&nbsp;   return 0;<br>
+    }
+    </div> 
+    <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Total 60
+    </div>
+    <p>
+    Above class adds numbers together, and returns the sum. The public members addNum and getTotal are the interfaces to the outside world and a user needs to know them to use the class. The private member total is something that is hidden from the outside world, but is needed for the class to operate properly.<br><br>
+    
+         <b>Designing Strategy</b><br>
+    Most of us have learnt to make class members private by default unless we really need to expose them. That's just good encapsulation.<br><br>
+    This is applied most frequently to data members, but it applies equally to all members, including virtual functions.</p>
+    
+    <h3><b>DATA ABSTRACTION</b></h3>
+    
+          <ol>
+         <li>Data abstraction refers to providing only essential information to the outside world and hiding their background details, i.e., to represent the needed information in program without presenting the details.</li>
+         <li>Data abstraction is a programming (and design) technique that relies on the separation of interface and implementation.</li>
+         <li>Let's take one real life example of a TV, which you can turn on and off, change the channel, adjust the volume, and add external components such as speakers, VCRs, and DVD players, BUT you do not know its internal details, that is, you do not know how it receives signals over the air or through a cable, how it translates them, and finally displays them on the screen.</li>
+         <li>Thus, we can say a television clearly separates its internal implementation from its external interface and you can play with its interfaces like the power button, channel changer, and volume control without having any knowledge of its internals.</li>
+         <li>In C++, classes provides great level of data abstraction. They provide sufficient public methods to the outside world to play with the functionality of the object and to manipulate object data, i.e., state without actually knowing how class has been implemented internally.</li>
+         <li>For example, your program can make a call to the sort() function without knowing what algorithm the function actually uses to sort the given values. In fact, the underlying implementation of the sorting functionality could change between releases of the library, and as long as the interface stays the same, your function call will still work.</li>
+         <li>In C++, we use classes to define our own abstract data types (ADT).</li>
+          
+          </ol>
+          
+          <p> 
+    You can use the cout object of class ostream to stream data to standard output like this -</p>
+    
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+    
+    using namespace std;<br>
+    int main() {<br>
+     &nbsp;&nbsp;  cout << "Hello C++" <<endl;<br>
+     &nbsp;&nbsp;  return 0;<br>
+    }</div>
+    <p>Here, you don't need to understand how cout displays the text on the user's screen. You need to only know the public interface and the underlying implementation of ‘cout’ is free to change.<br><br>
+         <b>Access Labels Enforce Abstraction</b></p>
+          <ul>
+         <li>In C++, we use access labels to define the abstract interface to the class. A class may contain zero or more access labels -</li>
+         <li>Members defined with a public label are accessible to all parts of the program. The data-abstraction view of a type is defined by its public members.</li>
+         <li>Members defined with a private label are not accessible to code that uses the class. The private sections hide the implementation from code that uses the type.</li>
+         <li>There are no restrictions on how often an access label may appear. Each access label specifies the access level of the succeeding member definitions. The specified access level remains in effect until the next access label is encountered or the closing right brace of the class body is seen.</li>
+        </ul>
+         <p><b>Benefits of Data Abstraction</b></p>
+          <ol>
+         <li>Data abstraction provides two important advantages -</li>
+         <li>Class internals are protected from inadvertent user-level errors, which might corrupt the state of the object.</li>
+         <li>The class implementation may evolve over time in response to changing requirements or bug reports without requiring change in user-level code.</li>
+         <li>By defining data members only in the private section of the class, the class author is free to make changes in the data. If the implementation changes, only the class code needs to be examined to see what affect the change may have. If data is public, then any function that directly access the data members of the old representation might be broken.</li></ol>
+    
+         <p><b>Data Abstraction Example</b>
+    Any C++ program where you implement a class with public and private members is an example of data abstraction. Consider the following example -</p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+    
+    using namespace std;<br>
+    class Adder {<br>
+      &nbsp;&nbsp; public:<br>
+      &nbsp;&nbsp;    // constructor<br>
+    &nbsp;&nbsp;      Adder(int i = 0) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;         total = i;<br>
+          }<br>
+          // interface to outside world<br>
+          void addNum(int number) {<br>
+    &nbsp;&nbsp;         total += number;<br>
+          }<br>
+          // interface to outside world<br>
+          int getTotal() {<br>
+    &nbsp;&nbsp;         return total;<br>
+          };<br>
+       private:<br>
+    &nbsp;&nbsp;      // hidden data from outside world<br>
+    &nbsp;&nbsp;      int total;<br>
+    };<br>
+    int main() {<br>
+    &nbsp;&nbsp;   Adder a;<br>
+    &nbsp;&nbsp;   a.addNum(10);<br>
+    &nbsp;&nbsp;   a.addNum(20);<br>
+    &nbsp;&nbsp;   a.addNum(30);<br>
+    &nbsp;&nbsp;   cout << "Total " << a.getTotal() <<endl;<br>
+    &nbsp;&nbsp;   return 0;<br>
+    }</div> 
+    <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Total 60
+    </div>
+    <p>Above class adds numbers together, and returns the sum. The public members - addNum and getTotal are the interfaces to the outside world and a user needs to know them to use the class. The private member total is something that the user doesn't need to know about, but is needed for the class to operate properly.<br><br><br
+    
+        <b>Designing Strategy</b></p>
+          <ul>
+         <li>Abstraction separates code into interface and implementation. So while designing your component, you must keep interface independent of the implementation so that if you change underlying implementation then interface would remain intact.</li>
+    
+         <li>In this case whatever programs are using these interfaces, they would not be impacted and would just need a recompilation with the latest implementation.</li>
+          </ul>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

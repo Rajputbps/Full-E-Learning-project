@@ -1,0 +1,101 @@
+<h3><b>FUNCTIONS</b></h3>
+<ul>
+    <li>A function is a group of statements that together perform a task. Every C program has at least one function, which is main(), and all the most trivial programs can define additional functions.</li>
+    <li>You can divide up your code into separate functions. How you divide up your code among different functions is up to you, but logically the division is such that each function performs a specific task.</li>
+    <li>A function declaration tells the compiler about a function's name, return type, and parameters. A function definition provides the actual body of the function.</li>
+    <li>The C standard library provides numerous built-in functions that your program can call. For example, strcat() to concatenate two strings, memcpy() to copy one memory location to another location, and many more functions.</li>
+    <li>A function can also be referred as a method or a sub-routine or a procedure, etc.</li>
+</ul>
+<h4>Defining a Function</h4>
+    <p>The general form of a function definition in C programming language is as follows - </p>
+    <div class="syntext">
+    return_type function_name( parameter list ) {<br>
+    &nbsp;&nbsp;body of the function<br>
+    }<br>
+</div>
+<p>A function definition in C programming consists of a function header and a function body. Here are all the parts of a function -</p>
+<ol>
+    <li><b>Return Type -</b> A function may return a value. The return_type is the data type of the value the function returns. Some functions perform the desired operations without returning a value. In this case, the return_type is the keyword void.</li>
+    <li><b>Function Name -</b> This is the actual name of the function. The function name and the parameter list together constitute the function signature.</li>
+    <li><b>Parameters -</b> A parameter is like a placeholder. When a function is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument. The parameter list refers to the type, order, and number of the parameters of a function. Parameters are optional; that is, a function may contain no parameters.</li>
+    <li><b>Function Body -</b> The function body contains a collection of statements that define what the function does.</li>
+</ol>
+<div>
+    Example <br>
+Given below is the source code for a function called max(). This function takes two parameters num1 and num2 and returns the maximum value between the two -
+</div>
+<div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+    /* function returning the max between two numbers */ <br>
+int max(int num1, int num2) {<br>
+    &nbsp;&nbsp; /* local variable declaration */<br>
+    &nbsp;&nbsp;int result;<br>
+    &nbsp;&nbsp;if (num1 > num2)<br>
+    &nbsp;&nbsp; &nbsp;&nbsp; result = num1;<br>
+    &nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;result = num2;<br>
+    &nbsp;&nbsp;return result; <br>
+}<br>
+</div>
+<h4>Function Declarations</h4>
+<div style="line-height: 200%;">
+    A function declaration tells the compiler about a function name and how to call the function. The actual body of the function can be defined separately. <br>
+A function declaration has the following parts -<br>
+&nbsp;&nbsp; &nbsp;&nbsp;return_type function_name( parameter list );<br>
+For the above defined function max(), the function declaration is as follows –<br>
+&nbsp;&nbsp; &nbsp;&nbsp;int max(int num1, int num2);<br>
+Parameter names are not important in function declaration only their type is required, so the following is also a valid declaration -<br>
+&nbsp;&nbsp; &nbsp;&nbsp;int max(int, int);<br>
+Function declaration is required when you define a function in one source file and you call that function in another file. In such case, you should declare the function at the top of the file calling the function.<br>
+</div>
+<h4>Calling a Function</h4>
+<ul>
+    <li>While creating a C function, you give a definition of what the function has to do. To use a function, you will have to call that function to perform the defined task.</li>
+    <li>When a program calls a function, the program control is transferred to the called function. A called function performs a defined task and when its return statement is executed or when its function-ending closing brace is reached, it returns the program control back to the main program.</li>
+    <li>To call a function, you simply need to pass the required parameters along with the function name, and if the function returns a value, then you can store the returned value. </li>
+</ul>
+<p>For example -</p>
+<div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+    #include &#60;stdio.h&#62;<br>
+    int max(int num1, int num2); <br>
+int main () {<br>
+    &nbsp;&nbsp; /* local variable definition */<br>
+    &nbsp;&nbsp; int a = 100;<br>
+    &nbsp;&nbsp; int b = 200;<br>
+    &nbsp;&nbsp; int ret;<br>
+    &nbsp;&nbsp; /* calling a function to get max value */<br>
+    &nbsp;&nbsp;ret = max(a, b);<br>
+    &nbsp;&nbsp;printf( "Max value is : %d\n", ret );<br>
+    &nbsp;&nbsp;return 0;<br>
+}<br>
+/* function returning the max between two numbers */<br>
+int max(int num1, int num2) <br>
+&nbsp;&nbsp; /* local variable declaration */<br>
+&nbsp;&nbsp; int result;<br>
+&nbsp;&nbsp; if (num1 > num2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    result = num1;<br>
+&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    result = num2;<br>
+&nbsp;&nbsp; return result; <br>
+}<br>
+</div>
+<p>We have kept max() along with main() and compiled the source code. While running the final executable, it would produce the following result -</p>
+<div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <p>Output</p>
+    Max value is : 200
+</div>
+<h4>Function Arguments</h4>
+<ol>
+    <li>If a function is to use arguments, it must declare variables that accept the values of the arguments. These variables are called the formal parameters of the function.</li>
+    <li>Formal parameters behave like other local variables inside the function and are created upon entry into the function and destroyed upon exit.</li>
+</ol>
+<p>While calling a function, there are two ways in which arguments can be passed to a function -</p>
+<ol style="line-height: 170%;">
+    <li>Call by value <br>
+        This method copies the actual value of an argument into the formal parameter of the function. In this case, changes made to the parameter inside the function have no effect on the argument.</li>
+    <li> Call by reference <br>
+        This method copies the address of an argument into the formal parameter. Inside the function, the address is used to access the actual argument used in the call. This means that changes made to the parameter affect the argument.</li>
+</ol>
+<p>By default, C uses call by value to pass arguments. In general, it means the code within a function cannot alter the arguments used to call the function.</p>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

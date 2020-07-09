@@ -1,0 +1,74 @@
+<h3><b>DECISION MAKING</b></h3>
+  <ul>
+      <li>Decision making structures require that the programmer specifies one or more conditions to be evaluated or tested by the program, along with a statement or statements to be executed if the condition is determined to be true, and optionally, other statements to be executed if the condition is determined to be false.</li>
+      <li>C programming language assumes any non-zero and non-null values as true, and if it is either zero or null, then it is assumed as false value.</li>
+  </ul>
+  <p>
+    C programming language provides the following types of decision making statements. 
+    <ol style="line-height: 200%;">
+        <li>if statement<br>
+            An if statement consists of a boolean expression followed by one or more statements.<br></li>
+        <li>if...else statement<br>
+            An if statement can be followed by an optional else statement, which executes when the Boolean expression is false.<br></li>
+        <li>nested if statements<br>
+                You can use one if or else if statement inside another if or else if statement(s).<br></li>
+        <li>switch statement<br>
+                A switch statement allows a variable to be tested for equality against a list of values.<br></li>
+        <li>nested switch statements<br>
+                    You can use one switch statement inside another switch statement(s).<br></li>
+    </ol> 
+  </p>
+  <h3><b>LOOPS</b></h3>
+  <ul>
+      <li>You may encounter situations, when a block of code needs to be executed several number of times. In general, statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on.</li>
+      <li>Programming languages provide various control structures that allow for more complicated execution paths.</li>
+      <li>A loop statement allows us to execute a statement or group of statements multiple times.</li>
+  </ul>
+  <p>C programming language provides the following types of loops to handle looping requirements.</p>
+  <ol>
+      <li>while loop <br>
+        Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.</li>
+        <li>
+            for loop <br>
+            Executes a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+        </li>
+        <li>
+            do...while loop <br>
+            It is more like a while statement, except that it tests the condition at the end of the loop body.
+        </li>
+        <li>
+            nested loops <br>
+            You can use one or more loops inside any other while, for, or do..while loop.
+        </li>
+  </ol>
+  <h4>Loop Control Statements</h4>
+  <p>
+    Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed. <br>
+    C supports the following control statements.
+  </p>
+  <ol>
+      <li>break statement <br>
+        Terminates the loop or switch statement and transfers execution to the statement immediately following the loop or switch.</li>
+        <li>continue statement <br>
+            Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.</li>
+        <li>goto statement <br>
+            Transfers control to the labeled statement.</li>
+  </ol>
+  <h4>The Infinite Loop</h4>
+  <p>A loop becomes an infinite loop if a condition never becomes false. The for loop is traditionally used for this purpose. Since none of the three expressions that form the 'for' loop are required, you can make an endless loop by leaving the conditional expression empty.</p>
+  <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+    #include &#60;stdio.h&#62;<br>
+    int main () { <br>
+        for( ; ; ) {<br>
+           printf("This loop will run forever.\n");<br>
+        }<br>
+        return 0;<br>
+     }
+  </div>
+  <p>
+    When the conditional expression is absent, it is assumed to be true. You may have an initialization and increment expression, but C programmers more commonly use the for(;;) construct to signify an infinite loop.
+    <br><br> <b>NOTE </b>- You can terminate an infinite loop by pressing Ctrl + C keys.
+  </p>
+  <div>
+ <p><b>For more clarification:-</b></p>
+</div>

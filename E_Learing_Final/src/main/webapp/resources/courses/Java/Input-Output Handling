@@ -1,0 +1,294 @@
+   <h3><b>INPUT-OUTPUT HANDLING</b></h3>
+   <p>The java.io package contains nearly every class you might ever need to perform input and output (I/O) in Java. All these streams represent an input source and an output destination. The stream in the java.io package supports many data such as primitives, object, localized characters, etc.<p>
+   <p><b>Stream</b></br>
+   A stream can be defined as a sequence of data. There are two kinds of Streams -</p>
+   <ol>
+      <li><b>InPutStream -</b> The InputStream is used to read data from a source.</li>
+      <li><b>OutPutStream -</b> The OutputStream is used for writing data to a destination.</li>
+   </ol>
+   <p>Java provides strong but flexible support for I/O related to files and networks but this lesson covers very basic functionality related to streams and I/O. We will see the most commonly used examples one by one -<br><br>
+   <b>Byte Streams</b><br><br>
+   Java byte streams are used to perform input and output of 8-bit bytes. Though there are many classes related to byte streams but the most frequently used classes are, FileInputStream and FileOutputStream. Following is an example which makes use of these two classes to copy an input file into an output file -<br><br>
+   Example:-</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;<br>
+   public class CopyFile {<br>
+    &nbsp;&nbsp;public static void main(String args[]) throws IOException { <br> 
+     &nbsp;&nbsp;FileInputStream in = null;<br>
+          &nbsp;&nbsp;FileOutputStream out = null;<br>
+          &nbsp;&nbsp;try {<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;   in = new FileInputStream("input.txt");<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;   out = new FileOutputStream("output.txt");<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;   int c;<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;   while ((c = in.read()) != -1) {<br>
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;      out.write(c);<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;   }<br>
+          &nbsp;&nbsp;}finally {<br>
+          &nbsp;&nbsp;   if (in != null) {<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;      in.close();<br>
+          &nbsp;&nbsp;   }<br>
+          &nbsp;&nbsp;   if (out != null) {<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;      out.close();<br>
+          &nbsp;&nbsp;   }<br>
+          &nbsp;&nbsp;}<br>
+      }<br>
+   }
+   </div>
+   <p>Now let's have a file input.txt with the following content -<br><br>
+   This is test for copy file.<br><br>
+   As a next step, compile the above program and execute it, which will result in creating <b>output.txt </b>file with the same content as we have in <b>input.txt</b>. So let's put the above code in CopyFile.java file and do the following:-
+   <div class="syntext">
+    $javac CopyFile.java<br>
+    $java CopyFile<br><br>
+   </div>
+   <b>Character Streams</b><br><br>
+   Java Byte streams are used to perform input and output of 8-bit bytes, whereas Java Character streams are used to perform input and output for 16-bit unicode. Though there are many classes related to character streams but the most frequently used classes are, FileReader and FileWriter. Though internally FileReader uses FileInputStream and FileWriter uses FileOutputStream but here the major difference is that FileReader reads two bytes at a time and FileWriter writes two bytes at a time.<br><br>
+   We can re-write the above example, which makes the use of these two classes to copy an input file (having unicode characters) into an output file -<br><br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;<br>
+   public class CopyFile {<br>
+       &nbsp;&nbsp;public static void main(String args[]) throws IOException {<br>
+       &nbsp;&nbsp;   FileReader in = null;<br>
+    &nbsp;&nbsp;      FileWriter out = null;<br>
+    &nbsp;&nbsp;      try {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         in = new FileReader("input.txt");<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         out = new FileWriter("output.txt");<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;                int c;<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         while ((c = in.read()) != -1) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;            out.write(c);<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         }<br>
+    &nbsp;&nbsp;      }finally {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         if (in != null) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;            in.close();<br>
+    &nbsp;&nbsp;         }<br>
+    &nbsp;&nbsp;         if (out != null) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            out.close();<br>
+    &nbsp;&nbsp;         }<br>
+    &nbsp;&nbsp;      }<br>
+      }<br>
+   }
+   </div>
+   <p>Now let's have a file input.txt with the following content -<br><br>
+   This is test for copy file.<br><br>
+   As a next step, compile the above program and execute it, which will result in creating <b> output.txt </b> file with the same content as we have in<b> input.txt</b>. So let's put the above code in <b>CopyFile.java</b> file and do the following -
+   <div class="syntext">
+    $javac CopyFile.java<br>
+    $java CopyFile<br><br>
+   </div>
+   <b>Standard Streams</b><br><br>
+   All the programming languages provide support for standard I/O where the user's program can take input from a keyboard and then produce an output on the computer screen. If you are aware of C or C++ programming languages, then you must be aware of three standard devices STDIN, STDOUT and STDERR. Similarly, Java provides the following three standard streams -<br><br>
+   <ol>
+      <li><b>Standard Input - </b>This is used to feed the data to user's program and usually a keyboard is used as standard input stream and represented as System.in.</li>
+      <li><b>Standard Output - </b>This is used to output the data produced by the user's program and usually a computer screen is used for standard output stream and represented as System.out.</li>
+      <li><b>Standard Error - </b>This is used to output the error data produced by the user's program and usually a computer screen is used for standard error stream and represented as System.err.</li>
+   </ol>
+   
+   Following is a simple program, which creates InputStreamReader to read standard input stream until the user types a "q" - </p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;<br>
+   public class ReadConsole {<br>
+    &nbsp;&nbsp;   public static void main(String args[]) throws IOException {<br>
+    &nbsp;&nbsp;      InputStreamReader cin = null;<br>
+    &nbsp;&nbsp;      try {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         cin = new InputStreamReader(System.in);<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         System.out.println("Enter characters, 'q' to quit.");<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         char c;<br>
+    &nbsp;&nbsp;         do {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            c = (char) cin.read();<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            System.out.print(c);<br>
+    &nbsp;&nbsp;         } while(c != 'q');<br>
+    &nbsp;&nbsp;      }finally {<br>
+    &nbsp;&nbsp;         if (cin != null) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            cin.close();<br>
+    &nbsp;&nbsp;         }<br>
+    &nbsp;&nbsp;      }<br>
+      }<br>
+   }
+   </div>
+   <p>
+   Let's keep the above code in ReadConsole.java file and try to compile and execute it as shown in the following program. This program continues to read and output the same character until we press 'q' -
+   <div class="syntext">
+    $javac ReadConsole.java</br>
+    $java ReadConsole</br>
+    </div>
+   Enter characters, 'q' to quit.</br>
+   1</br>
+   1</br>
+   e</br>
+   e</br>
+   q</br>
+   q</br>
+   </p>
+   <p><b>Reading and Writing Files</b></br>
+   As described earlier, a stream can be defined as a sequence of data. The <b>InputStream</b> is used to read data from a source and the <b>OutputStream</b> is used for writing data to a destination.</br></br>
+   Here is a hierarchy of classes to deal with Input and Output streams.</br>
+   The two important streams are <b>FileInputStream</b> and <b>FileOutputStream</b>, which would be discussed in this lesson.</br>
+   </p>
+   <p><b>FileInputStream</b></br></br>
+   This stream is used for reading data from the files. Objects can be created using the keyword new and there are several types of constructors available.</br></br>
+   Following constructor takes a file name as a string to create an input stream object to read the file -</br></br>
+     <div class="syntext">
+     InputStream f = new FileInputStream("C:/java/hello");
+     </div>
+   Following constructor takes a file object to create an input stream object to read the file. First we create a file object using File() method as follows -</br></br>
+     <div class="syntext">
+     File f = new File("C:/java/hello");</br>
+    InputStream f = new FileInputStream(f);
+    </div>
+   Once you have InputStream object in hand, then there is a list of helper methods which can be used to read to stream or to do other operations on the stream.</br></br>
+   </p>
+   <ol>
+      <li>public void close() throws IOException{ }</br>
+   This method closes the file output stream. Releases any system resources associated with the file. Throws an IOException.</li>
+   
+      <li>protected void finalize()throws IOException { }</br>
+   This method cleans up the connection to the file. Ensures that the close method of this file output stream is called when there are no more references to this stream. Throws an IOException.</li>
+   
+      <li>public int read(int r)throws IOException{ }</br>
+   This method reads the specified byte of data from the InputStream. Returns an int. Returns the next byte of data and -1 will be returned if it's the end of the file.</li>
+   
+      <li>public int read(byte[] r) throws IOException{ }</br>
+   This method reads r.length bytes from the input stream into an array. Returns the total number of bytes read. If it is the end of the file, -1 will be returned.</li>
+   
+      <li>public int available() throws IOException{ }</br>
+   Gives the number of bytes that can be read from this file input stream. Returns an int.</li>
+   </ol>
+   <p>
+   There are other important input streams available -
+   <ol>
+   <li>ByteArrayInputStream</li>
+   <li>DataInputStream</li>
+   </ol>
+      <b>FileOutputStream</b>
+   FileOutputStream is used to create a file and write data into it. The stream would create a file, if it doesn't already exist, before opening it for output.<br>
+   Here are two constructors which can be used to create a FileOutputStream object.<br>
+   Following constructor takes a file name as a string to create an input stream object to write the file -<br>
+    <div class="syntext">
+    OutputStream f = new FileOutputStream("C:/java/hello");
+    </div>
+   Following constructor takes a file object to create an output stream object to write the file. First, we create a file object using File() method as follows -<br>
+    <div class="syntext">
+    File f = new File("C:/java/hello");<br>
+    OutputStream f = new FileOutputStream(f);
+    </div>
+   Once you have OutputStream object in hand, then there is a list of helper methods, which can be used to write to stream or to do other operations on the stream.<br>
+   </p>
+   <ol>
+      <li>public void close() throws IOException{ }</br>
+   This method closes the file output stream. Releases any system resources associated with the file. Throws an IOException.</li>
+   
+      <li>protected void finalize()throws IOException { }</br>
+   This method cleans up the connection to the file. Ensures that the close method of this file output stream is called when there are no more references to this stream. Throws an IOException.</li>
+   
+      <li>public void write(int w)throws IOException{ }</br>
+   This methods writes the specified byte to the output stream.</li>
+   
+      <li>public void write(byte[] w)</br>
+   Writes w.length bytes from the mentioned byte array to the OutputStream.</li>
+   </ol>
+   <p>
+   There are other important output streams available -
+   <ol>
+   <li>ByteArrayOutputStream</li>
+   <li>DataOutputStream</li>
+   </ol>
+   Example</br>
+   Following is the example to demonstrate InputStream and OutputStream -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;</br>
+   public class fileStreamTest {</br>
+    &nbsp;&nbsp;   public static void main(String args[]) {</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;       try {</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         byte bWrite [] = {11,21,3,40,5};</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         OutputStream os = new FileOutputStream("test.txt");</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         for(int x = 0; x < bWrite.length ; x++) {</br>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;            os.write( bWrite[x] );   // writes the bytes</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         }</br>
+    &nbsp;&nbsp;         os.close();</br>
+    &nbsp;&nbsp;         InputStream is = new FileInputStream("test.txt");</br>
+    &nbsp;&nbsp;         int size = is.available();</br>
+    &nbsp;&nbsp;         for(int i = 0; i < size; i++) {</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            System.out.print((char)is.read() + "  ");</br>
+    &nbsp;&nbsp;         }</br>
+    &nbsp;&nbsp;         is.close();</br>
+    &nbsp;&nbsp;      } catch (IOException e) {</br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         System.out.print("Exception");</br>
+    &nbsp;&nbsp;      }	</br>
+      }</br>
+   }</br>
+   </div>
+   <p>
+   The above code would create file test.txt and would write given numbers in binary format. Same would be the output on the stdout screen.</p>
+   <ul>
+      <li>File Navigation and I/O</li></ul>
+   <p>There are several other classes that we would be going through to get to know the basics of File Navigation and I/O.
+   <ul>
+      <li>File Class</li>
+      <li>FileReader Class</li>
+      <li>FileWriter Class</li>
+   </ul>
+   </p>
+      <p><b>Directories in Java</b><br>
+   A directory is a File which can contain a list of other files and directories. You use File object to create directories, to list down files available in a directory. For complete detail, check a list of all the methods which you can call on File object and what are related to directories.
+   <br><br>
+      <b>Creating Directories</b><br>
+   There are two useful File utility methods, which can be used to create directories -
+   <ol>
+      <li>The <b>mkdir( )</b> method creates a directory, returning true on success and false on failure. Failure indicates that the path specified in the File object already exists, or that the directory cannot be created because the entire path does not exist yet.</li>
+      <li>The <b>mkdirs()</b> method creates both a directory and all the parents of the directory.</li>
+   </ol>
+   Following example creates "/tmp/user/java/bin" directory - <br>
+   Example:-<br>
+   </p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.File;<br>
+   public class CreateDir {<br>
+    &nbsp;&nbsp;   public static void main(String args[]) {<br>
+    &nbsp;&nbsp;      String dirname = "/tmp/user/java/bin";<br>
+    &nbsp;&nbsp;      File d = new File(dirname);<br>
+    &nbsp;&nbsp;      // Create directory now.<br>
+    &nbsp;&nbsp;      d.mkdirs();<br>
+    &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>Compile and execute the above code to create "/tmp/user/java/bin".	<br>
+   <b>Note -</b> Java automatically takes care of path separators on UNIX and Windows as per conventions. If you use a forward slash (/) on a Windows version of Java, the path will still resolve correctly.</p>
+   
+      <p><b>Listing Directories</b><br>
+   You can use list( ) method provided by File object to list down all the files and directories available in a directory as follows -<br><br>
+   Example:-</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.File;<br>
+   public class ReadDir {<br>
+    &nbsp;&nbsp;   public static void main(String[] args) {<br>
+    &nbsp;&nbsp;      File file = null;<br>
+    &nbsp;&nbsp;      String[] paths;<br>
+    &nbsp;&nbsp;       try {      <br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         // create new file object<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         file = new File("/tmp");<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         // array of files and directory<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         paths = file.list();<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         // for each name in the path array<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         for(String path:paths) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;            // prints filename and directory name<br>
+    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;            System.out.println(path);<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         }<br>
+    &nbsp;&nbsp;      } catch (Exception e) {<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         // if any error occurs<br>
+    &nbsp;&nbsp; &nbsp;&nbsp;         e.printStackTrace();<br>
+    &nbsp;&nbsp;      }<br>
+      }<br>
+   }
+   </div>
+   <p>This will produce the following result based on the directories and files available in your tmp directory -<p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   test1.txt<br>
+   test2.txt<br>
+   ReadDir.java<br>
+   ReadDir.class<br>
+   </div>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

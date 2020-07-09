@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
+
+body { 
+    background: url('http://www.publicdomainpictures.net/pictures/50000/velka/flower-meadow.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+  }
+ 
+  input{
+      width: 100%;
+      height: 60px;
+      border-radius: 10px;
+      padding-left: 3%;
+  }
+  
+  textarea{
+  	  width: 100%;
+      height: 130px;
+      border-radius: 10px;
+      padding-left: 3%;
+      padding-top: 2%;
+  }
+  .registrationHeader{
+      font-size: 30px;
+      font-weight: bold;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  .footerstyle{
+    background-color: rgb(20, 20, 245);
+    height: 50px;
+    margin-top: 5%;
+    padding-top: 1%;
+    color: #ffffff;
+  }
+.has-error input[type="text"], .has-error input[type="email"], .has-error select {
+    border: 1px solid #ff0400;
+}

@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+	     http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+	     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+<context:component-scan base-package="edu.homeEducation.*"></context:component-scan> 
+	     	<security:authentication-manager>
+		<security:authentication-provider>
+	<security:password-encoder 	ref="passwordEncoder"/>
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query="select email,password,enabled from Users where email= ?;"
+				authorities-by-username-query="select u.email, ur.role_name from Users u, UserRole ur where u.role_id = ur.role_id and email= ?;" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<security:http auto-config="true">
+		<security:csrf disabled="true" />
+		
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:access-denied-handler
+			error-page="/UserLogin" />
+		<security:session-management>
+			<security:concurrency-control
+				max-sessions="1" expired-url="/sessionexpired" />
+		</security:session-management>
+	<security:intercept-url pattern="/accessdenied"
+			access="hasRole('ROLE_ADMIN')" /> 
+			<security:intercept-url pattern="/loginsuccess"
+			access="hasRole('ROLE_ADMIN')" /> 
+		
+		<security:form-login login-page="/home"
+			default-target-url="/loginsuccess" login-processing-url="/perform_login"
+			authentication-failure-url="/UserLogin?error" username-parameter="email"
+			password-parameter="password" />
+		<security:logout logout-success-url="/perform_logout" invalidate-session="true" delete-cookies="JSESSIONID"/>
+	</security:http>
+	<bean id ="passwordEncoder" class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	      <constructor-arg name="strength" value="10" ></constructor-arg>
+	    </bean> </beans>

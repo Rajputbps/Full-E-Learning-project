@@ -1,0 +1,241 @@
+   <h3><b>DATA ENCAPSULATION</b></h3>
+   <ul>
+      <li>Encapsulation is one of the four fundamental OOP concepts. The other three are inheritance, polymorphism, and abstraction.</li>
+      <li>Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding.</li>
+   </ul>
+   <p>To achieve encapsulation in Java -</p>
+   <ol>
+      <li>Declare the variables of a class as private.</li>
+      <li>Provide public setter and getter methods to modify and view the variables values.</li>
+   </ol>
+   <p>
+   Example<br>
+   Following is an example that demonstrates how to achieve Encapsulation in Java -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : EncapTest.java */<br>
+   public class EncapTest {<br>
+     &nbsp;&nbsp; private String name;<br>
+     &nbsp;&nbsp; private String idNum;<br>
+     &nbsp;&nbsp; private int age;<br>
+     &nbsp;&nbsp; public int getAge() {<br>
+     &nbsp;&nbsp;    return age;<br>
+      }<br>
+     &nbsp;&nbsp; public String getName() {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;    return name;<br>
+     &nbsp;&nbsp; }<br>
+     &nbsp;&nbsp; public String getIdNum() {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;    return idNum;<br>
+     &nbsp;&nbsp; }<br>
+     &nbsp;&nbsp; public void setAge( int newAge) {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;    age = newAge;<br>
+     &nbsp;&nbsp; }<br>
+     &nbsp;&nbsp; public void setName(String newName) {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;    name = newName;<br>
+     &nbsp;&nbsp; }<br>
+     &nbsp;&nbsp; public void setIdNum( String newId) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      idNum = newId;<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>
+   The public setXXX() and getXXX() methods are the access points of the instance variables of the EncapTest class. Normally, these methods are referred as getters and setters. Therefore, any class that wants to access the variables should access them through these getters and setters.<br><br>
+   
+   The variables of the EncapTest class can be accessed using the following program -</p>
+   
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : RunEncap.java */<br>
+   public class RunEncap {<br>
+   &nbsp;&nbsp;   public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      EncapTest encap = new EncapTest();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      encap.setName("James");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      encap.setAge(20);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      encap.setIdNum("12343ms");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.print("Name : " + encap.getName() + " Age : " + encap.getAge());<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>This will produce the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Name : James Age : 20
+   </div>
+   <p><b>Benefits of Encapsulation</b><br>
+   <ol>
+      <li>The fields of a class can be made read-only or write-only.</li>
+      <li>A class can have total control over what is stored in its fields.</li>
+   </ol>
+   <h3><b>DATA ABSTRACTION</b></h3>
+   <ul>
+      <li>Abstraction is the quality of dealing with ideas rather than events. For example, when you consider the case of e-mail, complex details such as what happens as soon as you send an e-mail, the protocol your e-mail server uses are hidden from the user. Therefore, to send an e-mail you just need to type the content, mention the address of the receiver, and click send.</li>
+      <li>Likewise in Object-oriented programming, abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user. In other words, the user will have the information on what the object does instead of how it does it.</li>
+   </ul>
+   <p>In Java, abstraction is achieved using Abstract classes and interfaces.</p>
+   <p><b>Abstract Class</b></p>
+   <ul>
+      <li>A class which contains the abstract keyword in its declaration is known as abstract class.</li>
+      <li>Abstract classes may or may not contain abstract methods, i.e., methods without body ( public void get(); )</li>
+      <li>But, if a class has at least one abstract method, then the class must be declared abstract.</li>
+      <li>If a class is declared abstract, it cannot be instantiated.</li>
+      <li>To use an abstract class, you have to inherit it from another class, provide implementations to the abstract methods in it.</li>
+      <li>If you inherit an abstract class, you have to provide implementations to all the abstract methods in it.</li>
+   </ul>
+   <p>
+   Example<br>
+   This section provides you an example of the abstract class. To create an abstract class, just use the abstract keyword before the class keyword, in the class declaration.</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : Employee.java */<br>
+   public abstract class Employee {<br>
+   &nbsp;&nbsp;   private String name;<br>
+   &nbsp;&nbsp;   private String address;<br>
+   &nbsp;&nbsp;   private int number;<br>
+   &nbsp;&nbsp;   public Employee(String name, String address, int number) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Constructing an Employee");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      this.name = name;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      this.address = address;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      this.number = number;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;     public double computePay() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;     System.out.println("Inside Employee computePay");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;     return 0.0;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;      public void mailCheck() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Mailing a check to " + this.name + " " + this.address);<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;   public String toString() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return name + " " + address + " " + number;<br>
+   &nbsp;&nbsp;   }	<br>
+   &nbsp;&nbsp;   public String getName() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return name;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;    public String getAddress() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return address;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;   public void setAddress(String newAddress) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      address = newAddress;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;   public int getNumber() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return number;<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>
+   You can observe that except abstract methods the Employee class is same as normal class in Java. The class is now abstract, but it still has three fields, seven methods, and one constructor.<br><br>
+   
+   Now you can try to instantiate the Employee class in the following way -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : AbstractDemo.java */<br>
+   public class AbstractDemo {<br>
+   &nbsp;&nbsp;   public static void main(String [] args) {<br>
+   &nbsp;&nbsp;      /* Following is not allowed and would raise error */<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      Employee e = new Employee("George W.", "Houston, TX", 43);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("\n Call mailCheck using Employee reference--");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      e.mailCheck();<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   </p>When you compile the above class, it gives you the following error -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Employee.java:46: Employee is abstract; cannot be instantiated
+         Employee e = new Employee("George W.", "Houston, TX", 43);
+                      ^
+   1 error</div>
+   <p>
+   <b>Inheriting the Abstract Class</b><br>
+   We can inherit the properties of Employee class just like concrete class in the following way -<br><br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : Salary.java */<br>
+   public class Salary extends Employee {<br>
+   &nbsp;&nbsp;   private double salary;   // Annual salary<br>   
+   &nbsp;&nbsp;   public Salary(String name, String address, int number, double salary) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      super(name, address, number);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      setSalary(salary);<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;     public void mailCheck() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Within mailCheck of Salary class ");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Mailing check to " + getName() + " with salary " + salary);<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;    public double getSalary() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return salary;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;    public void setSalary(double newSalary) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      if(newSalary >= 0.0) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         salary = newSalary;<br>
+   &nbsp;&nbsp;      }<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;      public double computePay() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Computing salary pay for " + getName());<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return salary/52;<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>
+   Here, you cannot instantiate the Employee class, but you can instantiate the Salary Class, and using this instance you can access all the three fields and seven methods of Employee class as shown below.</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : AbstractDemo.java */<br>
+   public class AbstractDemo {<br>
+   &nbsp;&nbsp;   public static void main(String [] args) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      Salary s = new Salary("Mohd Mohtashim", "Ambehta, UP", 3, 3600.00);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      Employee e = new Salary("John Adams", "Boston, MA", 2, 2400.00);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Call mailCheck using Salary reference --");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      s.mailCheck();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("\n Call mailCheck using Employee reference--");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      e.mailCheck();<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>This produces the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Constructing an Employee
+   Constructing an Employee
+   Call mailCheck using Salary reference --
+   Within mailCheck of Salary class 
+   Mailing check to Mohd Mohtashim with salary 3600.0
+    Call mailCheck using Employee reference--
+   Within mailCheck of Salary class 
+   Mailing check to John Adams with salary 2400.0
+   </div>
+   <p>
+   <b>Abstract Methods</b><br>
+   If you want a class to contain a particular method but you want the actual implementation of that method to be determined by child classes, you can declare the method in the parent class as an abstract.
+   <ul>
+      <li>abstract keyword is used to declare the method as abstract.</li>
+      <li>You have to place the abstract keyword before the method name in the method declaration.</li>
+      <li>An abstract method contains a method signature, but no method body.</li>
+      <li>Instead of curly braces, an abstract method will have a semoi colon (;) at the end.</li>
+   </ul>
+   Following is an example of the abstract method.<br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public abstract class Employee {<br>
+   &nbsp;&nbsp;   private String name;
+   &nbsp;&nbsp;   private String address;<br>
+   &nbsp;&nbsp;   private int number;<br>
+   &nbsp;&nbsp;    public abstract double computePay();<br>
+   &nbsp;&nbsp;   // Remainder of class definition<br>
+   }
+   </div>
+   <p>
+   Declaring a method as abstract has two consequences -<br>
+   The class containing it must be declared as abstract.<br>
+   Any class inheriting the current class must either override the abstract method or declare itself as abstract.<br><br>
+   
+   <b>Note -</b> Eventually, a descendant class has to implement the abstract method; otherwise, you would have a hierarchy of abstract classes that cannot be instantiated.<br>
+   
+   Suppose Salary class inherits the Employee class, then it should implement the computePay() method as shown below -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   /* File name : Salary.java */<br>
+   public class Salary extends Employee {<br>
+   &nbsp;&nbsp;   private double salary;   // Annual salary<br>
+   &nbsp;&nbsp;    public double computePay() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      System.out.println("Computing salary pay for " + getName());<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      return salary/52;<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;   // Remainder of class definition<br>
+   }
+   </div>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

@@ -1,0 +1,260 @@
+<h3><b>INHERITANCE</b></h3>
+   <ul>
+      <li>Inheritance can be defined as the process where one class acquires the properties (methods and fields) of another. With the use of inheritance the information is made manageable in a hierarchical order.</li>
+      <li>The class which inherits the properties of other is known as subclass (derived class, child class) and the class whose properties are inherited is known as superclass (base class, parent class).</li>
+   </ul>
+   <p><b>extends Keyword</b><br>
+   extends is the keyword used to inherit the properties of a class. Following is the syntax of extends keyword.<br>
+   <b>Syntax -</b></p>
+   <div class="syntext">
+   class Super {<br>
+      .....<br>
+      .....<br>
+   }<br>
+   class Sub extends Super {<br>
+      .....<br>
+      .....<br>
+   }<br>
+   </div>
+   <p><b>Sample Code</b><br><br>
+   Following is an example demonstrating Java inheritance. In this example, you can observe two classes namely <u>Calculation</u> and<u> My_Calculation</u>.<br><br>
+   Using extends keyword, the My_Calculation inherits the methods <b> addition()</b> and <b>Subtraction()</b> of Calculation class.<br><br>
+   Copy and paste the following program in a file with name <b>My_Calculation.java</b><br>
+   Example -<br>
+   </p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   class Calculation {<br>
+   &nbsp;&nbsp;  int z;<br>
+   &nbsp;&nbsp; public void addition(int x, int y) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   z = x + y;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println("The sum of the given numbers:"+z);<br>
+   &nbsp;&nbsp; }<br>
+   &nbsp;&nbsp;public void Subtraction(int x, int y) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  z = x - y;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println("The difference between the given numbers:"+z);<br>
+   &nbsp;&nbsp;}<br>
+   }<br>
+   public class My_Calculation extends Calculation {<br>
+   &nbsp;&nbsp;  public void multiplication(int x, int y) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; z = x * y;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("The product of the given numbers:"+z);<br>
+   &nbsp;&nbsp; }	<br>
+   &nbsp;&nbsp;public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   int a = 20, b = 10;<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;My_Calculation demo = new My_Calculation();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; demo.addition(a, b);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;demo.Subtraction(a, b);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;demo.multiplication(a, b);<br>
+   &nbsp;&nbsp;}<br>
+   }
+   </div>
+   <p>Compile and execute the above code as shown below.<br>
+   javac My_Calculation.java<br>
+   java My_Calculation<br>
+   After executing the program, it will produce the following result -<br></p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   The sum of the given numbers:30
+   The difference between the given numbers:10
+   The product of the given numbers:200
+   </div>
+   <p>
+   In the given program, when an object to My_Calculation class is created, a copy of the contents of the superclass is made within it. That is why, using the object of the subclass you can access the members of a superclass.<br><br>
+   The Superclass reference variable can hold the subclass object, but using that variable you can access only the members of the superclass, so to access the members of both classes it is recommended to always create reference variable to the subclass.<br><br>
+   If you consider the above program, you can instantiate the class as given below. But using the superclass reference variable ( cal in this case) you cannot call the method multiplication(), which belongs to the subclass My_Calculation.
+   </p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   Calculation demo = new My_Calculation();<br>
+   demo.addition(a, b);<br>
+   demo.Subtraction(a, b);</div>
+   <p><b>Note -</b> A subclass inherits all the members (fields, methods, and nested classes) from its superclass. Constructors are not members, so they are not inherited by subclasses, but the constructor of the superclass can be invoked from the subclass.<br><br>
+   <b>The super keyword</b></p>
+   <ul>
+      <li>The super keyword is similar to this keyword. Following are the scenarios where the super keyword is used.</li>
+      <li>It is used to differentiate the members of superclass from the members of subclass, if they have same names.</li>
+      <li>It is used to invoke the superclass constructor from subclass.</li>
+   </ul>
+   <p><b>Differentiating the Members</b><br>
+   If a class is inheriting the properties of another class. And if the members of the superclass have the names same as the sub class, to differentiate these variables we use super keyword as shown below. 
+   <div class="syntext">
+   super.variable<br>
+   super.method();<br>
+   Sample Code
+   </div>
+   This section provides you a program that demonstrates the usage of the super keyword.<br><br>
+   In the given program, you have two classes namely Sub_class and Super_class, both have a method named <b>display()</b> with different implementations, and a variable named num with different values. We are invoking display() method of both classes and printing the value of the variable num of both classes. Here you can observe that we have used super keyword to differentiate the members of superclass from subclass.<br><br>
+   Copy and paste the program in a file with name <b>Sub_class.java.</b><br><br>
+   Example -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   class Super_class {<br>
+   &nbsp;&nbsp;int num = 20;<br>
+   &nbsp;&nbsp; // display method of superclass<br>
+   &nbsp;&nbsp;public void display() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  System.out.println("This is the display method of superclass");<br>
+   &nbsp;&nbsp;  }<br>
+   }<br>
+   public class Sub_class extends Super_class {<br>
+   &nbsp;&nbsp;  int num = 10;<br>
+   &nbsp;&nbsp;  // display method of sub class<br>
+   &nbsp;&nbsp; public void display() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;    System.out.println("This is the display method of subclass");<br>
+   &nbsp;&nbsp; }<br>
+   &nbsp;&nbsp;public void my_method() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   // Instantiating subclass<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   Sub_class sub = new Sub_class();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  // Invoking the display() method of sub class<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; sub.display();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;// Invoking the display() method of superclass<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;super.display();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;// printing the value of variable num of subclass<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("value of the variable named num in sub class:"+ sub.num);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;// printing the value of variable num of superclass<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  System.out.println("value of the variable named num in super class:"+ super.num);<br>
+   &nbsp;&nbsp;}<br>
+   &nbsp;&nbsp;public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;Sub_class obj = new Sub_class();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;obj.my_method();<br>
+   &nbsp;&nbsp;}<br>
+   }
+   </div>
+   <p>Compile and execute the above code using the following syntax.<br>
+   javac Super_Demo<br>
+   java Super<br>
+   On executing the program, you will get the following result -<br></p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   This is the display method of subclass
+   This is the display method of superclass
+   value of the variable named num in sub class:10
+   value of the variable named num in super class:20
+   </div>
+   <p><b>Invoking Superclass Constructor</b><br>
+   If a class is inheriting the properties of another class, the subclass automatically acquires the default constructor of the superclass. But if you want to call a parameterized constructor of the superclass, you need to use the super keyword as shown below.
+   <div class="syntext">
+   super(values);
+   </div>
+   <b>Sample Code</b><br>
+   The program given in this section demonstrates how to use the super keyword to invoke the parametrized constructor of the superclass. This program contains a superclass and a subclass, where the superclass contains a parameterized constructor which accepts a integer value, and we used the super keyword to invoke the parameterized constructor of the superclass.<br>
+   Copy and paste the following program in a file with the name Subclass.java<br><br>
+   Example -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   class Superclass {<br>
+   &nbsp;&nbsp; int age;<br>
+   &nbsp;&nbsp; Superclass(int age) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  this.age = age; 	<br>	 
+   &nbsp;&nbsp;}<br>
+   &nbsp;&nbsp;public void getAge() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  System.out.println("The value of the variable named age in super class is: " +age);<br>
+   &nbsp;&nbsp;}<br>
+   }<br>
+   public class Subclass extends Superclass {<br>
+   &nbsp;&nbsp;Subclass(int age) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;  super(age);<br>
+   &nbsp;&nbsp;}<br>
+   &nbsp;&nbsp; public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; Subclass s = new Subclass(24);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; s.getAge();<br>
+   &nbsp;&nbsp;}<br>
+   }
+   </div>
+   <p>Compile and execute the above code using the following syntax.<br>
+   javac Subclass<br>
+   java Subclass<br>
+   On executing the program, you will get the following result -<br></p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   The value of the variable named age in super class is: 24
+   </div>
+   <p><b>IS-A Relationship</b><br>
+   IS-A is a way of saying: This object is a type of that object. Let us see how the extends keyword is used to achieve inheritance.<br></p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public class Animal { }<br>
+   public class Mammal extends Animal { }<br>
+   public class Reptile extends Animal { }<br>
+   public class Dog extends Mammal { }<br>
+   </div>
+   <p>
+   Now, based on the above example, in Object-Oriented terms, the following are true -<br>
+   Animal is the superclass of Mammal class.<br>
+   Animal is the superclass of Reptile class.<br>
+   Mammal and Reptile are subclasses of Animal class.<br>
+   Dog is the subclass of both Mammal and Animal classes.<br>
+   Now, if we consider the IS-A relationship, we can say -<br><br>
+   
+   Mammal IS-A Animal<br>
+   Reptile IS-A Animal<br>
+   Dog IS-A Mammal<br>
+   Hence: Dog IS-A Animal as well<br><br>
+   With the use of the extends keyword, the subclasses will be able to inherit all the properties of the superclass except for the private properties of the superclass.<br><br>
+   We can assure that Mammal is actually an Animal with the use of the instance operator.<br><br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   class Animal { }<br>
+   class Mammal extends Animal { }<br>
+   class Reptile extends Animal { }<br>
+   public class Dog extends Mammal {<br>
+   &nbsp;&nbsp;public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;   Animal a = new Animal();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; Mammal m = new Mammal();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; Dog d = new Dog();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(m instanceof Animal);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(d instanceof Mammal);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(d instanceof Animal);<br>
+   &nbsp;&nbsp; }<br>
+   }
+   </div>
+   <p>This will produce the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   true<br>
+   true<br>
+   true<br></div>
+   <p>Since we have a good understanding of the extends keyword, let us look into how the implements keyword is used to get the IS-A relationship.<br><br>
+   Generally, the implements keyword is used with classes to inherit the properties of an interface. Interfaces can never be extended by a class.<br><br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public interface Animal { }<br>
+   public class Mammal implements Animal { }<br>
+   public class Dog extends Mammal { }
+   </div>
+   <p><b>The instanceof Keyword</b><br>
+   Let us use the instanceof operator to check determine whether Mammal is actually an Animal, and dog is actually an Animal.<br><br>
+   Example -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   interface Animal{ }<br>
+   class Mammal implements Animal{ }<br>
+   public class Dog extends Mammal {<br>
+   &nbsp;&nbsp;   public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; Mammal m = new Mammal();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; Dog d = new Dog();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(m instanceof Animal);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(d instanceof Mammal);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; System.out.println(d instanceof Animal);<br>
+   &nbsp;&nbsp;}<br>
+   }
+   </div>
+   <p>This will produce the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   true<br>
+   true<br>
+   true<br>
+   </div>
+   <p><b>HAS-A relationship</b><br>
+   These relationships are mainly based on the usage. This determines whether a certain class HAS-A certain thing. This relationship helps to reduce duplication of code as well as bugs.<br><br>
+   Lets look into an example -<br><br>
+   Example</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public class Vehicle{ }<br>
+   public class Speed{ }<br>
+   public class Van extends Vehicle {<br>
+   &nbsp;&nbsp;private Speed sp;<br>
+   } 
+   </div>
+   <p>
+   This shows that class Van HAS-A Speed. By having a separate class for Speed, we do not have to put the entire code that belongs to speed inside the Van class, which makes it possible to reuse the Speed class in multiple applications.<br><br>
+   In Object-Oriented feature, the users do not need to bother about which object is doing the real work. To achieve this, the Van class hides the implementation details from the users of the Van class. So, basically what happens is the users would ask the Van class to do a certain action and the Van class will either do the work by itself or ask another class to perform the action.</p>
+
+   <div>
+ <p><b>For more clarification:-</b></p>
+</div>

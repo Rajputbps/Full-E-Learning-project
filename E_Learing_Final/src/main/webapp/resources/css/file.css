@@ -1,0 +1,22 @@
+.codeDiv{
+border-left-style:solid;
+border-left-color:blue;
+border-left-width:5px;
+padding-left: 2%;
+}
+.outputDiv{
+border-left-style:solid;
+border-left-color:green;
+border-left-width:5px;
+padding-left: 2%;
+} 
+.syntext{
+padding:  2%  2%  2%  5%;	
+}
+.utubeIcon{
+	height: 50px;
+	width: 70px;
+}
+.code{
+padding-left:2%;
+}

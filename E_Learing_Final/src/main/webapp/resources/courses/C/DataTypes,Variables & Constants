@@ -1,0 +1,459 @@
+<h3><b>DATA TYPES</b></h3>
+<p> &nbsp; &nbsp;Data types in c refer to an extensive system used for declaring variables or functions of different types. The type of a variable determines how much space it occupies in storage and how the bit pattern stored is interpreted. </p>
+<p>&nbsp; &nbsp; The types in C can be classified as follows -</p>
+
+<ol>
+    <li>Basic Types<br>
+        They are arithmetic types and are further classified into: (a) integer types and (b) floating-point types.</li>
+    <li>
+        Enumerated types<br>
+They are again arithmetic types and they are used to define variables that can only assign certain discrete integer values throughout the program.
+    </li>
+    <li>
+        The type void<br>
+The type specifier void indicates that no value is available.
+    </li>
+    <li>
+        Derived types<br>
+        They include (a) Pointer types, (b) Array types, (c) Structure types, (d) Union types and (e) Function types.  
+    </li>
+</ol>
+
+<p>The array types and structure types are referred collectively as the aggregate types. The type of a function specifies the type of the function's return value. We will see the basic types in the following section, where as other types will be covered in the upcoming chapters.</p>
+<h4>Integer Types</h4>
+ <p>The following table provides the details of standard integer types with their storage sizes and value ranges –</p>
+<table class="table table-striped table-dark">
+	<tr>
+<th>Type</th>
+<th>Storage Size</th>
+<th>Value Range</th>
+</tr>
+    <tr>
+        <td>char</td>
+        <td>1 byte</td>
+        <td>-128 to 127 or 0 to 255</td>
+    </tr>
+    <tr>
+        <td>unsigned char</td>
+        <td>1 byte</td>
+        <td>0 to 255</td>
+    </tr>
+    <tr>
+        <td>signed char</td>
+        <td>1 byte</td>
+        <td>-128 to 127</td>
+    </tr>
+    <tr>
+        <td>int</td>
+        <td>2 or 4 bytes</td>
+        <td>-32,768 to 32,767 or -2,147,483,648 to 2,147,483,647</td>
+    </tr>
+	<tr>
+        <td>unsigned int</td>
+        <td>2 or 4 bytes</td>
+        <td>0 to 65,535 or 0 to 4,294,967,295</td>
+    </tr>
+    <tr>
+        <td>short</td>
+        <td>2 bytes</td>
+        <td>-32,768 to 32,767</td>
+    </tr>
+    <tr>
+        <td>unsigned short</td>
+        <td>2 bytes</td>
+        <td>0 to 65,535</td>
+    </tr>
+    <tr>
+        <td>long</td>
+        <td>8 bytes</td>
+        <td>-9223372036854775808 to 9223372036854775807</td>
+    </tr>
+    <tr>
+        <td>unsigned long</td>
+        <td>8 bytes</td>
+        <td>0 to 18446744073709551615</td>
+    </tr>
+</table>
+<p>To get the exact size of a type or a variable on a particular platform, you can use the sizeof operator. The expressions sizeof(type) yields the storage size of the object or type in bytes. Given below is an example to get the size of various type on a machine using different constant defined in limits header file -</p>
+<div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+    <p>
+            #include &#60;stdio.h&#62;<br>
+            #include &#60;stdlib.h&#62;<br>
+            #include &#60;limits.h&#62;<br>
+            #include &#60;float.h&#62;<br>
+            int main(int argc, char** argv) {<br>
+              &nbsp;&nbsp;   printf("CHAR_BIT    :   %d\n", CHAR_BIT);<br>
+              &nbsp;&nbsp;   printf("CHAR_MAX    :   %d\n", CHAR_MAX);<br>
+              &nbsp;&nbsp;   printf("CHAR_MIN    :   %d\n", CHAR_MIN);<br>
+              &nbsp;&nbsp;   printf("INT_MAX     :   %d\n", INT_MAX);<br>
+              &nbsp;&nbsp;   printf("INT_MIN     :   %d\n", INT_MIN);<br>
+              &nbsp;&nbsp;   printf("LONG_MAX    :   %ld\n", (long) LONG_MAX);<br>
+               &nbsp;&nbsp;  printf("LONG_MIN    :   %ld\n", (long) LONG_MIN);<br>
+               &nbsp;&nbsp;  printf("SCHAR_MAX   :   %d\n", SCHAR_MAX);<br>
+               &nbsp;&nbsp;  printf("SCHAR_MIN   :   %d\n", SCHAR_MIN);<br>
+               &nbsp;&nbsp;  printf("SHRT_MAX    :   %d\n", SHRT_MAX);<br>
+               &nbsp;&nbsp;  printf("SHRT_MIN    :   %d\n", SHRT_MIN);<br>
+               &nbsp;&nbsp;  printf("UCHAR_MAX   :   %d\n", UCHAR_MAX);<br>
+               &nbsp;&nbsp;  printf("UINT_MAX    :   %u\n", (unsigned int) UINT_MAX);<br>
+               &nbsp;&nbsp;  printf("ULONG_MAX   :   %lu\n", (unsigned long) ULONG_MAX);<br>
+               &nbsp;&nbsp;  printf("USHRT_MAX   :   %d\n", (unsigned short) USHRT_MAX);<br>
+                &nbsp;&nbsp; return 0;<br>
+            }
+    </p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+        <p>
+            CHAR_BIT    :   8 <br>
+            CHAR_MAX    :   127<br>
+            CHAR_MIN    :   -128<br>
+            INT_MAX     :   2147483647<br>
+            INT_MIN     :   -2147483648<br>
+            LONG_MAX    :   9223372036854775807<br>
+            LONG_MIN    :   -9223372036854775808<br>
+            SCHAR_MAX   :   127<br>
+            SCHAR_MIN   :   -128<br>
+            SHRT_MAX    :   32767<br>
+            SHRT_MIN    :   -32768<br>
+            UCHAR_MAX   :   255<br>
+            UINT_MAX    :   4294967295<br>
+            ULONG_MAX   :   18446744073709551615<br>
+            USHRT_MAX   :   65535<br>
+        </p>
+    </div>
+</div>
+<h4>Floating-Point Types</h4>
+<p>The following table provide the details of standard floating-point types with storage sizes and value ranges and their precision -
+
+    Type	Storage size	Value range	Precision</p>
+    <table class="table table-striped table-dark">
+        <tr>
+            <td>float</td>
+            <td>4 byte	1.2E-38 to 3.4E+38</td>
+            <td>6 decimal places</td>
+        </tr>
+        <tr>
+            <td>double</td>
+            <td>8 byte	2.3E-308 to 1.7E+308</td>
+            <td>15 decimal places</td>
+        </tr>
+        <tr>
+            <td>long double</td>
+            <td>10 byte	3.4E-4932 to 1.1E+4932</td>
+            <td>19 decimal places</td>
+        </tr>
+    </table>
+    <p>
+        The header file float.h defines macros that allow you to use these values and other details about the binary representation of real numbers in your programs. The following example prints the storage space taken by a float type and its range values -
+    </p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+        <p>#include &#60;stdio.h&#62;<br>
+            #include &#60;stdlib.h&#62;<br>
+            #include &#60;limits.h&#62;<br>
+            #include &#60;float.h&#62;<br>
+            int main(int argc, char** argv) {<br>
+                &nbsp;&nbsp; printf("Storage size for float : %d \n", sizeof(float));<br>
+                &nbsp;&nbsp; printf("FLT_MAX     :   %g\n", (float) FLT_MAX);<br>
+                &nbsp;&nbsp; printf("FLT_MIN     :   %g\n", (float) FLT_MIN);<br>
+                &nbsp;&nbsp; printf("-FLT_MAX    :   %g\n", (float) -FLT_MAX);<br>
+                &nbsp;&nbsp; printf("-FLT_MIN    :   %g\n", (float) -FLT_MIN);<br>
+                &nbsp;&nbsp; printf("DBL_MAX     :   %g\n", (double) DBL_MAX);<br>
+                &nbsp;&nbsp; printf("DBL_MIN     :   %g\n", (double) DBL_MIN);<br>
+                &nbsp;&nbsp; printf("-DBL_MAX     :  %g\n", (double) -DBL_MAX);<br>
+                &nbsp;&nbsp; printf("Precision value: %d\n", FLT_DIG );<br>
+                &nbsp;&nbsp; return 0;<br>
+            }
+        </p>
+<div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+            <p>
+                Storage size for float : 4 <br>
+FLT_MAX      :   3.40282e+38<br>
+FLT_MIN      :   1.17549e-38<br>
+-FLT_MAX     :   -3.40282e+38<br>
+-FLT_MIN     :   -1.17549e-38<br>
+DBL_MAX      :   1.79769e+308<br>
+DBL_MIN      :   2.22507e-308<br>
+-DBL_MAX     :  -1.79769e+308<br>
+Precision value: 6<br>
+            </p>
+        </div>
+    </div>
+    <h4>The void Type</h4>
+    <p>
+        The void type specifies that no value is available. It is used in three kinds of situations - <br>
+    1. Function returns as void <br>
+There are various functions in C which do not return any value or you can say they return void. A function with no return value has the return type as void. For example, void exit (int status);<br>
+
+    2. Function arguments as void<br>
+There are various functions in C which do not accept any parameter. A function with no parameter can accept a void. For example, int rand(void);<br>
+
+    3. Pointers to void<br>
+A pointer of type void * represents the address of an object, but not its type. For example, a memory allocation function void *malloc( size_t size ); returns a pointer to void which can be casted to any data type.<br>
+    </p>
+    <h3>VARIABLES</h3>
+    <p>
+        A variable is nothing but a name given to a storage area that our programs can manipulate. Each variable in C has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable. <br>
+The name of a variable can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because C is case-sensitive. Based on the basic types explained in the previous chapter, there will be the following basic variable types -
+    </p>
+    <ol>
+        <li>
+            char <br>
+            Typically a single octet(one byte). It is an integer type.
+        </li>
+        <li>
+            int <br>
+            The most natural size of integer for the machine.
+        </li>
+        <li>
+            float <br>
+            A single-precision floating point value.
+        </li>
+        <li>
+            double <br>
+            A double-precision floating point value.
+        </li>
+        <li>
+            void <br>
+            Represents the absence of type.
+        </li>
+    </ol>
+    <p>C programming language also allows to define various other types of variables, which we will cover in subsequent chapters like Enumeration, Pointer, Array, Structure, Union, etc. For this chapter, let us study only basic variable types.</p>
+    <h4>Variable Definition in C</h4>
+    <p>
+        A variable definition tells the compiler where and how much storage to create for the variable. A variable definition specifies a data type and contains a list of one or more variables of that type as follows - <br>
+<b>type variable_list;</b> <br>
+Here, type must be a valid C data type including char, w_char, int, float, double, bool, or any user-defined object; and variable_list may consist of one or more identifier names separated by commas. Some valid declarations are shown here - <br>
+<ul>
+    <li>int    i, j, k;</li>
+    <li>char   c, ch;</li>
+    <li>float  f, salary;</li>
+    <li>double d;</li>
+</ul>
+The line int i, j, k; declares and defines the variables i, j, and k; which instruct the compiler to create variables named i, j and k of type int. <br>
+Variables can be initialized (assigned an initial value) in their declaration. The initializer consists of an equal sign followed by a constant expression as follows - <br>
+<b>type variable_name = value;</b><br>
+Some examples are - <br>
+<ul style="list-style-type: none;">
+    <li>extern int d = 3, f = 5;    // declaration of d and f. </li>
+    <li>int d = 3, f = 5;           // definition and initializing d and f. </li>
+    <li>byte z = 22;                // definition and initializes z. </li>
+    <li>char x = 'x';               // the variable x has the value 'x'.</li>
+</ul>
+For definition without an initializer: variables with static storage duration are implicitly initialized with NULL (all bytes have the value 0); the initial value of all other variables are undefined.
+    </p>
+    <h4>Variable Declaration in C</h4>
+    <p>
+        <ul>
+            <li>A variable declaration provides assurance to the compiler that there exists a variable with the given type and name so that the compiler can proceed for further compilation without requiring the complete detail about the variable. A variable definition has its meaning at the time of compilation only, the compiler needs actual variable definition at the time of linking the program.</li>
+            <li>A variable declaration is useful when you are using multiple files and you define your variable in one of the files which will be available at the time of linking of the program. You will use the keyword extern to declare a variable at any place. Though you can declare a variable multiple times in your C program, it can be defined only once in a file, a function, or a block of code.</li>
+        </ul>
+    </p>
+    <h5>Example:</h5>
+    <p>Try the following example, where variables have been declared at the top, but they have been defined and initialized inside the main function -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+        <p>
+            #include &#60;stdio.h&#62;<br>
+        // Variable declaration: <br>
+extern int a, b; <br>
+extern int c;<br>
+extern float f;<br>
+int main () {<br>
+   &nbsp;&nbsp; /* variable definition: */ <br>
+   &nbsp;&nbsp; int a, b;<br>
+   &nbsp;&nbsp; int c;<br>
+   &nbsp;&nbsp; float f;<br>
+   &nbsp;&nbsp; /* actual initialization */<br>
+   &nbsp;&nbsp; a = 10;<br>
+   &nbsp;&nbsp; b = 20;<br>
+   &nbsp;&nbsp;  c = a + b;<br>
+   &nbsp;&nbsp; printf("value of c : %d \n", c);<br>
+   &nbsp;&nbsp; f = 70.0/3.0;<br>
+   &nbsp;&nbsp; printf("value of f : %f \n", f);<br>
+   &nbsp;&nbsp;  return 0;<br>
+}
+        </p>
+       <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+            <p>value of c : 30<br>
+                value of f : 23.333334</p>
+        </div>
+    </div>
+    <p>The same concept applies on function declaration where you provide a function name at the time of its declaration and its actual definition can be given anywhere else. For example -</p>
+    <div class="syntext">
+        // function declaration <br>
+int func();<br>
+int main() {<br>
+    &nbsp;&nbsp;// function call<br>
+    &nbsp;&nbsp;int i = func();<br>
+}<br>
+// function definition<br>
+int func() {<br>
+   &nbsp;&nbsp; return 0;<br>
+}<br>
+    </div>
+    <h3>Lvalues and Rvalues in C</h3>
+    <p>
+        There are two kinds of expressions in C - <br>
+        1. <b>lvalue -</b> Expressions that refer to a memory location are called "lvalue" expressions. An lvalue may appear as either the left-hand or right-hand side of an assignment.<br>
+        2. <b>rvalue -</b> The term rvalue refers to a data value that is stored at some address in memory. An rvalue is an expression that cannot have a value assigned to it which means an rvalue may appear on the right-hand side but not on the left-hand side of an assignment.<br>
+    Variables are lvalues and so they may appear on the left-hand side of an assignment. Numeric literals are rvalues and so they may not be assigned and cannot appear on the left-hand side. Take a look at the following valid and invalid statements -<br><br>
+    int g = 20; // valid statement<br>
+    10 = 20; // invalid statement; would generate compile-time error<br>
+    </p>
+    <h3>CONSTANTS</h3>
+    <ul>
+        <li>
+            Constants refer to fixed values that the program may not alter during its execution. These fixed values are also called literals.
+        </li>
+        <li>
+            Constants can be of any of the basic data types like an integer constant, a floating constant, a character constant, or a string literal. There are enumeration constants as well.
+        </li>
+        <li>
+            Constants are treated just like regular variables except that their values cannot be modified after their definition.
+        </li>
+    </ul>
+    <h4>Integer Literals</h4>
+    <p>An integer literal can be a decimal, octal, or hexadecimal constant. A prefix specifies the base or radix: 0x or 0X for hexadecimal, 0 for octal, and nothing for decimal. <br>
+        An integer literal can also have a suffix that is a combination of U and L, for unsigned and long, respectively. The suffix can be uppercase or lowercase and can be in any order. <br>
+        Here are some examples of integer literals -</p>
+    <ul style="list-style-type: none;">
+        <li>212         /* Legal */</li>
+        <li>215u        /* Legal */</li>
+        <li>0xFeeL      /* Legal */</li>
+        <li>078         /* Illegal: 8 is not an octal digit */</li>
+        <li>078         /* Illegal: 8 is not an octal digit */</li>
+    </ul>
+    <p>Following are other examples of various types of integer literals -</p>
+    <ul style="list-style-type: none;">
+        <li>85         /* decimal */</li>
+        <li>0213       /* octal */</li>
+        <li>0x4b       /* hexadecimal */</li>
+        <li>30         /* int */</li>
+        <li>30u        /* unsigned int */</li>
+        <li>30l        /* long */</li>
+        <li>30ul       /* unsigned long */</li>
+    </ul>
+    <h4>Floating-point Literals</h4>
+    <p>
+        A floating-point literal has an integer part, a decimal point, a fractional part, and an exponent part. You can represent floating point literals either in decimal form or exponential form. <br>
+
+While representing decimal form, you must include the decimal point, the exponent, or both; and while representing exponential form, you must include the integer part, the fractional part, or both. The signed exponent is introduced by e or E. <br> <br>
+
+Here are some examples of floating-point literals -
+    </p>
+    <ul style="list-style-type: none;">
+        <li>3.14159       /* Legal */</li>
+        <li>314159E-5L    /* Legal */</li>
+        <li>510E          /* Illegal: incomplete exponent */</li>
+        <li>210f          /* Illegal: no decimal or exponent */</li>
+        <li>.e55          /* Illegal: missing integer or fraction */</li>
+
+    </ul>
+    <h4>Character Constants</h4>
+    <ul>
+        <li>
+            Character literals are enclosed in single quotes, e.g., 'x' can be stored in a simple variable of char type.
+        </li>
+        <li>
+            Character literals are enclosed in single quotes, e.g., 'x' can be stored in a simple variable of char type.
+        </li>
+        <li>
+            There are certain characters in C that represent special meaning when preceded by a backslash for example, newline (\n) or tab (\t).
+        </li>
+        <li>
+            Here, you have a list of such escape sequence codes -
+        </li>
+    </ul>
+    <div>
+        <p>Following is the example to show a few escape sequence characters -</p>
+      <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+            #include &#60;stdio.h&#62;<br>
+                int main() { <br>
+                &nbsp;&nbsp;    printf("Hello\tWorld\n\n"); <br>
+                &nbsp;&nbsp;    return 0; <br>
+                }
+        </div>
+        <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+            Hello World
+        </div>
+    </div>
+    <h4>String Literals</h4>
+    <ul>
+        <li>
+            String literals or constants are enclosed in double quotes "". A string contains characters that are similar to character literals: plain characters, escape sequences, and universal characters.
+        </li>
+        <li>
+            You can break a long line into multiple lines using string literals and separating them using white spaces.
+        </li>
+    </ul>
+    <p>
+        Here are some examples of string literals. All the three forms are identical strings.
+    </p>
+    <p>"hello, dear" <br>
+        "hello, \<br>
+        dear"<br>
+        "hello, " "d" "ear"</p>
+
+        <h4>Defining Constants</h4>
+        <p>There are two simple ways in C to define constants -</p>
+        <ol>
+            <li>
+                Using #define preprocessor.
+            </li>
+            <li>
+                Using const keyword.
+            </li> 
+        </ol>
+        <h4>Using #define preprocessor.</h4>
+        <div>
+            <p>Given below is the form to use #define preprocessor to define a constant - <br>
+                #define identifier value <br>
+                The following example explains it in detail - <br>
+                </p>
+<div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+                    #include &#60;stdio.h&#62;<br>
+                    #define LENGTH 10   <br>
+#define WIDTH  5<br>
+#define NEWLINE '\n'<br>
+int main() {<br>
+  &nbsp;&nbsp;  int area;  <br>
+  &nbsp;&nbsp;   area = LENGTH * WIDTH;<br>
+  &nbsp;&nbsp;  printf("value of area : %d", area);<br>
+  &nbsp;&nbsp;  printf("%c", NEWLINE);<br>
+  &nbsp;&nbsp;  return 0;<br>
+}
+                </div>
+                   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+                    <p>value of area : 50</p>
+                </div>
+        </div>
+        <h4>The const Keyword</h4>
+        <div>
+            <p>You can use const prefix to declare constants with a specific type as follows - <br>
+                const type variable = value; <br>
+                The following example explains it in detail -</p>
+                <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+                    #include &#60;stdio.h&#62;<br>
+                    int main() {<br>
+                        &nbsp;&nbsp; const int  LENGTH = 10;<br>
+                        &nbsp;&nbsp; const int  WIDTH = 5;<br>
+                        &nbsp;&nbsp; const char NEWLINE = '\n';<br>
+                        &nbsp;&nbsp; int area;  <br>
+                        &nbsp;&nbsp;   area = LENGTH * WIDTH;<br>
+                        &nbsp;&nbsp; printf("value of area : %d", area);<br>
+                        &nbsp;&nbsp; printf("%c", NEWLINE);<br>
+                        &nbsp;&nbsp; return 0;<br>
+                     }
+                </div>
+               <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+                    <div>value of area : 50</div>
+                </div>
+        </div>
+        <p>Note that it is a good programming practice to define constants in CAPITALS.</p>
+        
+        <div>
+ <p><b>For more clarification:-</b></p>
+</div>

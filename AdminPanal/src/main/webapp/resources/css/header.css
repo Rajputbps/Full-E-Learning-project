@@ -1,0 +1,213 @@
+ .dropdown-menu {
+    position: absolute;
+    top: 130%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+.navbar-brand img
+{
+	height: 40px;
+	padding-left: 30px;
+
+}
+.navbar-nav li
+{
+	padding: 0 10px;
+} 
+.navbar-nav a
+{
+	float: right;
+	text-align: left;
+} 
+.has-error input[type="text"], .has-error input[type="email"], .has-error select 
+{
+    border: 1px solid #ff0400;
+}
+#nav-bar ul li a:hover
+{
+	color: #007bff;
+}
+.navbar
+{
+	background:#fff;
+}
+.navbar-toggler
+{
+	border: none;
+}
+.nav-link
+{
+	color: #555;
+	font-weight: 600;
+	font-size: 16px;
+}
+/*----slider----*/
+#slider
+{
+	width: 100%;
+}
+/*-----About-----*/
+#about
+{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	color: #555;
+}
+#about .btn
+{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.about-content
+{
+	padding-top: 20px;.
+}
+/*-------Get In Touch------*/
+#contact
+{
+	background: #efefef;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	color: #777;
+}
+.contact-form
+{
+	padding: 15px;
+}
+.from-control
+{
+	border-radius: 0;
+	border: none;
+}
+::placeholder
+{
+	color: #999;
+}
+.follow
+{
+	background: #fff;
+	padding: 10px;
+	margin: 15px;
+}
+.contact-info .fa
+{
+	margin: 10px;
+	color: #007bff;
+	font-weight: bold
+
+}
+/*-----footer-----*/
+#footer
+{
+	background: #333;
+	color: #fff;
+	padding: 12px;
+}
+
+.box{
+ display: inline-flex;
+}
+
+.carousel-inner{
+	width:100%;
+	max-height: 500px !important;
+  }
+  
+
+  .carousel-inner > .item > a > img {
+	min-height: 500px;    /* Set slide height here */
+  
+  }
+  #form-control
+  {
+  	height: 30px;
+  	width: 500px;
+  }
+  .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  margin-top: 6.5%;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+  .modal-dialog { 
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important; 
+        padding: 0 !important;
+        max-width:none !important;
+        
+
+    }
+
+    .modal-content {
+        height: auto !important;
+        min-height: 100% !important;
+        width:100%;
+        border-radius: 0 !important;
+        /* background-color: #c4a000!important  */
+    }
+    
+    .modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: hidden;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+}
+
+.noteInput::placeholder{
+	text-align: center; 
+}
+.noteInput{
+	width: 100%;
+	height: 100%;
+	padding:2%;
+	border-radius: 10px;
+}

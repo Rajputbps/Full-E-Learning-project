@@ -1,0 +1,383 @@
+
+<h3><b>OPERATORS</b></h3>
+ <p>An operator is a symbol that tells the compiler to perform specific mathematical or logical functions. C language is rich in built-in operators and provides the following types of operators -</p>
+ <ol>
+     <li>Arithmetic Operators</li>
+     <li>Relational Operators</li>
+     <li>Logical Operators</li>
+     <li>Bitwise Operators</li>
+     <li>Assignment Operators</li>
+     <li>Misc Operators</li>
+ </ol>
+ <p>We will, in this chapter, look into the way each operator works.</p>
+ <h5>1. Arithmetic Operators</h5>
+ <p>The following table shows all the arithmetic operators supported by the C language. Assume variable A holds 10 and variable B holds 20 then -
+    <br> Show Examples</p>
+<table class="table table-striped table-dark">
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>Adds two operands</td>
+            <td>A + B = 30</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>A + B = 30</td>
+            <td>A - B = -10</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>Multiplies both operands</td>
+            <td>A * B = 200</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>Divides numerator by de-numerator</td>
+            <td>B / A = 2</td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>Modulus Operator and remainder of after an integer division</td>
+            <td>B % A = 0</td>
+        </tr>
+        <tr>
+            <td>++</td>
+            <td>Increment operator increases the integer value by one</td>
+            <td>A++ = 11</td>
+        </tr>
+        <tr>
+            <td>--</td>
+            <td>Decrement operator decreases the integer value by one</td>
+            <td>A-- = 9</td>
+        </tr>
+    </table>
+    <h5>2. Relational Operators</h5>
+    <p>The following table shows all the relational operators supported by C. Assume variable A holds 10 and variable B holds 20 then - <br>
+        Examples</p>
+        <table class="table table-striped table-dark" >
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>==</td>
+                <td>Checks if the values of two operands are equal or not. <br>If yes, then the condition becomes true.</td>
+                <td>(A == B) is not true.</td>
+            </tr>
+            <tr>
+                <td>!=</td>
+                <td>Checks if the values of two operands are equal or not. If the values are <br>not equal, then the condition becomes true.</td>
+                <td>(A != B) is true.</td>
+            </tr>
+            <tr>
+                <td> > </td>
+                <td>Checks if the value of left operand is greater than the value of right<br> operand. If yes, then the condition becomes true.</td>
+                <td>(A > B) is not true.</td>
+            </tr>
+            <tr>
+                <td> < </td>
+                <td>Checks if the value of left operand is less than the value of right operand.<br> If yes, then the condition becomes true.</td>
+                <td> (A < B) is true. </td>
+            </tr>
+            <tr>
+                <td>>=</td>
+                <td>Checks if the value of left operand is greater than or equal to the value of right<br> operand. If yes, then the condition becomes true.</td>
+                <td>(A >= B) is not true.</td>
+            </tr>
+            <tr>
+                <td><=</td>
+                <td>Checks if the value of left operand is less than or equal to the value of right <br>operand. If yes, then the condition becomes true.</td>
+                <td>(A <= B) is true.</td>
+            </tr> 
+        </table> 
+        <h4>3. Logical Operators</h4>
+        <p>Following table shows all the logical operators supported by C language. Assume variable A holds 1 and variable B holds 0, then - <br>
+            Show Examples</p>
+            <table class="table table-striped table-dark">
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>&&</td>
+                    <td>Called Logical AND operator. If both the operands are <br>non-zero, then the condition becomes true</td>
+                    <td>(A && B) is false.</td>
+                </tr>
+                <tr>
+                    <td>||</td>
+                    <td>Called Logical OR Operator. If any of the two operands is <br>non-zero, then the condition becomes true.</td>
+                    <td>(A || B) is true.</td>
+                </tr>
+                <tr>
+                    <td>!</td>
+                    <td>the condition becomes true.</td>
+                    <td>!(A && B) is true.</td>
+                </tr> 
+            </table>  
+            <h4>4. Bitwise Operators</h4>
+            <p>Bitwise operator works on bits and perform bit-by-bit operation. The truth tables for &, |, and ^ is as follows –</p>
+            <table class="table table-striped table-dark">
+                <tr><th>p</th><th>q</th><th>p&q</th><th>p|q</th><th>p ^ q</th>
+                </tr>
+                <tr>
+                    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                </tr>
+                <tr>
+                    <td>0</td><td>1</td><td>0</td><td>1</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td><td>1</td><td>1</td><td>1</td><td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td><td>0</td><td>0</td><td>1</td><td>1</td>
+                </tr>
+            </table>
+            <p>Assume A = 60 and B = 13 in binary format, they will be as follows - <br>
+                A = 0011 1100 <br>
+                B = 0000 1101
+            </p>
+            <ul style="list-style-type: none;">
+                <li>A&B = 0000 1100</li>
+                <li>A|B = 0011 1101</li>
+                <li>A^B = 0011 0001</li>
+                <li>~A = 1100 0011</li>
+            </ul>
+            <p>The following table lists the bitwise operators supported by C. Assume variable 'A' holds 60 and variable 'B' holds 13, then -
+                <br> Show Examples</p>
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>&</td>
+                        <td>Binary AND Operator copies a bit to the<br> result if it exists in both operands.</td>
+                        <td>(A & B) = 12, i.e., 0000 1100</td>
+                    </tr>
+                    <tr>
+                        <td>|</td>
+                        <td>Binary OR Operator copies a bit<br> if it exists in either operand.</td>
+                        <td>(A | B) = 61, i.e., 0011</td>
+                    </tr>
+                    <tr>
+                        <td>^</td>
+                        <td>Binary XOR Operator copies the bit <br>if it is set in one operand but not both.</td>
+                        <td>(A ^ B) = 49, i.e., 0011 0001</td>
+                    </tr>
+                    <tr>
+                        <td>~</td>
+                        <td>Binary One's Complement Operator is unary<br> and has the effect of 'flipping' bits.</td>
+                        <td>(~A ) = ~(60), i.e,. -0111101</td>
+                    </tr>
+                    <tr>
+                        <td><<</td>
+                        <td>Binary Left Shift Operator. The left operands value is <br>moved left by the number of bits specified by the right operand.</td>
+                        <td>A << 2 = 240 i.e., 1111 0000</td>
+                    </tr>
+                    <tr>
+                        <td>>></td>
+                        <td>Binary Right Shift Operator. The left operands value is moved <br>right by the number of bits specified by the right operand.</td>
+                        <td>A >> 2 = 15 i.e., 0000 1111</td>
+                    </tr> 
+                </table>  
+
+                <h4>5. Assignment Operators</h4>
+                <p>
+                    The following table lists the assignment operators supported by the C language - <br>
+Show Examples
+                </p>
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>=</td>
+                        <td>Simple assignment operator. Assigns values from <br> right side operands to left side operand</td>
+                        <td>C = A + B will assign the value of A + B to C</td>
+                    </tr>
+                    <tr>
+                        <td>+=</td>
+                        <td>Add AND assignment operator. It adds the right operand <br> to the left operand and assign the result to the left operand.</td>
+                        <td>C += A is equivalent to C = C + A</td>
+                    </tr>
+                    <tr>
+                        <td>-=</td>
+                        <td>Subtract AND assignment operator. It subtracts the right <br> operand from the left operand and assigns the result to the left operand.</td>
+                        <td>C -= A is equivalent to C = C - A</td>
+                    </tr>
+                    <tr>
+                        <td>*=</td>
+                        <td>Multiply AND assignment operator. It multiplies the right operand <br>with the left operand and assigns the result to the left operand.</td>
+                        <td>C *= A is equivalent to C = C * A</td>
+                    </tr>
+                    <tr>
+                        <td>/=</td>
+                        <td>Divide AND assignment operator. It divides the left operand with <br>the right operand and assigns the result to the left operand.</td>
+                        <td>C /= A is equivalent to C = C / A</td>
+                    </tr>
+                    <tr>
+                        <td>%= </td>
+                        <td> Modulus AND assignment operator. It takes modulus using two<br> operands and assigns the result to the left operand.</td>
+                        <td>C %= A is equivalent to C = C % A </td>
+                    </tr> 
+                    <tr>
+                        <td><<= </td>
+                        <td>Left shift AND assignment operator. </td>
+                        <td>C <<= 2 is same as C = C << 2 </td>
+                    </tr> 
+                    <tr>
+                        <td>>>= </td>
+                        <td>Right shift AND assignment operator. </td>
+                        <td>C >>= 2 is same as C = C >> 2 </td>
+                    </tr> 
+                    <tr>
+                        <td>&= </td>
+                        <td>Bitwise AND assignment operator. </td>
+                        <td>C &= 2 is same as C = C & 2 </td>
+                    </tr> 
+                    <tr>
+                        <td>^= </td>
+                        <td>Bitwise exclusive OR and assignment operator. </td>
+                        <td>C ^= 2 is same as C = C ^ 2 </td>
+                    </tr> 
+                    <tr>
+                        <td>|= </td>
+                        <td>Bitwise inclusive OR and assignment operator. </td>
+                        <td>C |= 2 is same as C = C | 2 </td>
+                    </tr> 
+                </table>  
+
+
+                <h4>Misc Operators ( sizeof & ternary)</h4>
+                <p>Besides the operators discussed above, there are a few other important operators including sizeof and ? : supported by the C Language.
+                   <br> Show Examples</p>
+                   <table class="table table-striped table-dark">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>sizeof()</td>
+                        <td>Returns the size of a variable.</td>
+                        <td>sizeof(a), where a is integer, will return 4.</td>
+                    </tr>
+                    <tr>
+                        <td>&</td>
+                        <td>Returns the address of a variable.</td>
+                        <td>&a; returns the actual address of the variable</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Pointer to a variable.</td>
+                        <td>*a.</td>
+                    </tr>
+                    <tr>
+                        <td>?:</td>
+                        <td>Conditional Expression.</td>
+                        <td>If Condition is true ? then value X : otherwise value Y</td>
+                    </tr> 
+                </table> 
+                
+                <h4>Operators Precedence in C</h4>
+                <p>
+                    Operator precedence determines the grouping of terms in an expression and decides how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has a higher precedence than the addition operator.<br> <br>
+For example, x = 7 + 3 * 2; here, x is assigned 13, not 20 because operator * has a higher precedence than +, so it first gets multiplied with 3*2 and then adds into 7. <br><br>
+Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first. <br>
+Show Examples
+                </p>
+
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td> Postfix</td>
+                        <td> () [] -> . ++ - -</td>
+                        <td> Left to right</td>
+                    </tr>
+                    <tr>
+                        <td> Unary</td>
+                        <td> + - ! ~ ++ - - (type)* & sizeof </td>
+                        <td>Right to left </td>
+                    </tr>
+                    <tr>
+                        <td>Multiplicative </td>
+                        <td>* / %    </td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td> Additive</td>
+                        <td> + -</td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td>Shift </td>
+                        <td><< >> </td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td>Relational </td>
+                        <td>< <= > >= </td>
+                        <td> Left to right</td>
+                    </tr>
+                    <tr>
+                        <td>Equality </td>
+                        <td>== != </td>
+                        <td> Left to right</td>
+                    </tr>
+                    <tr>
+                        <td>Bitwise AND </td>
+                        <td>& </td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td> Bitwise XOR</td>
+                        <td>^ </td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td>Bitwise OR </td>
+                        <td> |</td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td>Logical AND </td>
+                        <td>&& </td>
+                        <td> Left to right</td>
+                    </tr>
+                    <tr>
+                        <td>Logical OR </td>
+                        <td>|| </td>
+                        <td>Left to right </td>
+                    </tr>
+                    <tr>
+                        <td> Conditional</td>
+                        <td>?: </td>
+                        <td> Right to left</td>
+                    </tr>
+                    <tr>
+                        <td>Assignment </td>
+                        <td>= += -= *= /= %=>>= <<= &= ^= |= </td>
+                        <td> Right to left</td>
+                    </tr>
+                    <tr>
+                        <td>Comma </td>
+                        <td>, </td>
+                        <td> Left to right</td>
+                    </tr>
+                    </table>
+                   <div>
+ <p><b>For more clarification:-</b></p>
+</div>        

@@ -1,0 +1,232 @@
+<h3><b>INHERITANCE</b></h3>
+   <ul>
+   
+      <li>One of the most important concepts in object-oriented programming is that of inheritance. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.</li>
+      <li>When creating a class, instead of writing completely new data members and member functions, the programmer can designate that the new class should inherit the members of an existing class. This existing class is called the base class, and the new class is referred to as the derived class.</li>
+      <li>The idea of inheritance implements the is a relationship. For example, mammal IS-A animal, dog IS-A mammal hence dog IS-A animal as well and so on.</li>
+   </ul>
+   <p><b>Base and Derived Classes</b><br><br>
+   A class can be derived from more than one classes, which means it can inherit data and functions from multiple base classes. To define a derived class, we use a class derivation list to specify the base class(es). A class derivation list names one or more base classes and has the form -<br>
+   <div class="syntext">class derived-class: access-specifier base-class</div>
+   Where access-specifier is one of public, protected, or private, and base-class is the name of a previously defined class. If the access-specifier is not used, then it is private by default.<br><br>
+   Consider a base class Shape and its derived class Rectangle as follows -<br>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+   #include &#60;iostream&#62;<br>
+   using namespace std;<br>
+   // Base class<br>
+   class Shape {<br>
+   &nbsp;&nbsp;   public:<br>
+    &nbsp;&nbsp;     void setWidth(int w) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;        width = w;<br>
+         }<br>
+         void setHeight(int h) {<br>
+    &nbsp;&nbsp;        height = h;<br>
+         }<br>
+      protected:<br>
+    &nbsp;&nbsp;     int width;<br>
+    &nbsp;&nbsp;     int height;<br>
+   };<br>
+   // Derived class<br>
+   class Rectangle: public Shape {<br>
+    &nbsp;&nbsp;  public:<br>
+    &nbsp;&nbsp;     int getArea() { <br>
+    &nbsp;&nbsp;        return (width * height); <br>
+         }<br>
+   };<br>
+   int main(void) {<br>
+    &nbsp;&nbsp;  Rectangle Rect;<br>
+    &nbsp;&nbsp;   Rect.setWidth(5);<br>
+   &nbsp;&nbsp;   Rect.setHeight(7);<br>
+   &nbsp;&nbsp;   // Print the area of the object.<br>
+   &nbsp;&nbsp;   cout << "Total area: " << Rect.getArea() << endl;<br>
+   &nbsp;&nbsp;   return 0;<br>
+   }</div>
+   When the above code is compiled and executed, it produces the following result -
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   
+   Total area: 35
+   </div>
+   
+   <p><b>Access Control and Inheritance</b><br><br>
+   A derived class can access all the non-private members of its base class. Thus base-class members that should not be accessible to the member functions of derived classes should be declared private in the base class.<br><br>
+   We can summarize the different access types according to - who can access them in the following way -</p>
+      
+   <table class="table table-striped table-dark">
+      <tr>
+         <th>Access</th><th>public</th><th>protected</th><th>private</th>
+      </tr>
+      <tr>
+         <td> Same class</td><td> yes</td><td> yes</td><td>yes </td>
+      </tr>
+      <tr>
+         <td> Derived classes</td><td>yes </td><td> yes</td><td>no </td>
+      </tr>
+      <tr>
+         <td> Outside classes</td><td>yes </td><td> no</td><td> no</td>
+      </tr>
+   </table>
+   
+   <p>A derived class inherits all base class methods with the following exceptions -</p>
+   <ul>
+      <li>Constructors, destructors and copy constructors of the base class.</li>
+      <li>Overloaded operators of the base class.</li>
+      <li>The friend functions of the base class.</li>
+   </ul>
+   
+   <p><b>Type of Inheritance</b></p>
+   <ul>
+      <li>When deriving a class from a base class, the base class may be inherited through public, protected or private inheritance. The type of inheritance is specified by the access-specifier as explained above.</li>
+      <li>We hardly use protected or private inheritance, but public inheritance is commonly used. While using different type of inheritance, following rules are applied -</li>
+   </ul>
+   <ol>
+      <li><b>Public Inheritance -</b> When deriving a class from a public base class, public members of the base class become public members of the derived class and protected members of the base class become protected members of the derived class. A base class's private members are never accessible directly from a derived class, but can be accessed through calls to the public and protected members of the base class.</li>
+   
+      <li><b>Protected Inheritance - </b>When deriving from a protected base class, public and protected members of the base class become protected members of the derived class.</li>
+   
+      <li><b>Private Inheritance - </b>When deriving from a private base class, public and protected members of the base class become private members of the derived class.</li>
+   
+      <li><b>Multiple Inheritance</b>
+   A C++ class can inherit members from more than one class and here is the extended syntax -</li>
+   </ol>
+   <p>
+   class derived-class: access baseA, access baseB....<br><br>
+   Where access is one of public, protected, or private and would be given for every base class and they will be separated by comma as shown above. Let us try the following example -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+   #include &#60;iostream&#62;<br>
+   
+    using namespace std;<br>
+   // Base class Shape<br>
+   class Shape {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      void setWidth(int w) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         width = w;<br>
+         }<br>
+         void setHeight(int h) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         height = h;<br>
+         }<br>
+          protected:<br>
+         int width;<br>
+         int height;<br>
+   };<br>
+   // Base class PaintCost<br>
+   class PaintCost {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      int getCost(int area) {<br>
+   &nbsp;&nbsp;         return area * 70;<br>
+   &nbsp;&nbsp;      }<br>
+   };<br>
+   // Derived class<br>
+   class Rectangle: public Shape, public PaintCost {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      int getArea() {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         return (width * height); <br>
+   &nbsp;&nbsp;      }<br>
+   };<br>
+   int main(void) {<br>
+   &nbsp;&nbsp;   Rectangle Rect;<br>
+   &nbsp;&nbsp;   int area;<br>
+   &nbsp;&nbsp;   Rect.setWidth(5);<br>
+   &nbsp;&nbsp;   Rect.setHeight(7);<br>
+   &nbsp;&nbsp;   area = Rect.getArea();<br>
+   &nbsp;&nbsp;   // Print the area of the object.<br>
+   &nbsp;&nbsp;   cout << "Total area: " << Rect.getArea() << endl;<br>
+   &nbsp;&nbsp;   // Print the total cost of painting<br>
+   &nbsp;&nbsp;   cout << "Total paint cost: $" << Rect.getCost(area) << endl;<br>
+   &nbsp;&nbsp;   return 0;<br>
+   }
+   </div>
+   When the above code is compiled and executed, it produces the following result -
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   
+   Total area: 35
+   Total paint cost: $2450
+   </div>
+   <h3><b>INTERFACES</b></h3>
+   <ul>
+      <li>An interface describes the behavior or capabilities of a C++ class without committing to a particular implementation of that class.</li>
+      <li>The C++ interfaces are implemented using abstract classes and these abstract classes should not be confused with data abstraction which is a concept of keeping implementation details separate from associated data.</li>
+      <li>A class is made abstract by declaring at least one of its functions as pure virtual function. A pure virtual function is specified by placing "= 0" in its declaration as follows -</li>
+   </ul>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   
+   class Box {<br>
+   &nbsp;&nbsp;  	 public:<br>
+   &nbsp;&nbsp;     	 // pure virtual function<br>
+   &nbsp;&nbsp;      	virtual double getVolume() = 0;<br>
+   &nbsp;&nbsp;         	private:<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;              double length;      // Length of a box<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;             double breadth;     // Breadth of a box<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;             double height;      // Height of a box<br>
+             };<br>
+   </div>
+   <p>
+   The purpose of an abstract class (often referred to as an ABC) is to provide an appropriate base class from which other classes can inherit. Abstract classes cannot be used to instantiate objects and serves only as an interface. Attempting to instantiate an object of an abstract class causes a compilation error.<br><br>
+   Thus, if a subclass of an ABC needs to be instantiated, it has to implement each of the virtual functions, which means that it supports the interface declared by the ABC. Failure to override a pure virtual function in a derived class, then attempting to instantiate objects of that class, is a compilation error.<br><br>
+   Classes that can be used to instantiate objects are called concrete classes.</p>
+   
+   <p><b>Abstract Class Example</b><br><br>
+   Consider the following example where parent class provides an interface to the base class to implement a function called getArea() -</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+   #include &#60;iostream&#62;<br>
+   
+   using namespace std;<br>
+   // Base class<br>
+   class Shape {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      // pure virtual function providing interface framework.<br>
+   &nbsp;&nbsp;      virtual int getArea() = 0;<br>
+   &nbsp;&nbsp;      void setWidth(int w) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         width = w;<br>
+   &nbsp;&nbsp;      }<br>
+   &nbsp;&nbsp;         void setHeight(int h) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         height = h;<br>
+   &nbsp;&nbsp;      }<br>
+   &nbsp;&nbsp;      protected:<br>
+   &nbsp;&nbsp;      int width;<br>
+   &nbsp;&nbsp;      int height;<br>
+   };<br>
+    // Derived classes<br>
+   class Rectangle: public Shape {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      int getArea() { <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         return (width * height);<br> 
+   &nbsp;&nbsp;      }<br>
+   };<br>
+   class Triangle: public Shape {<br>
+   &nbsp;&nbsp;   public:<br>
+   &nbsp;&nbsp;      int getArea() { <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;         return (width * height)/2;<br> 
+   &nbsp;&nbsp;      }<br>
+   };<br>
+    int main(void) {<br>
+   &nbsp;&nbsp;   Rectangle Rect;<br>
+   &nbsp;&nbsp;   Triangle  Tri;<br>
+   &nbsp;&nbsp;    Rect.setWidth(5);<br>
+   &nbsp;&nbsp;   Rect.setHeight(7);<br>
+   &nbsp;&nbsp;   // Print the area of the object.<br>
+   &nbsp;&nbsp;   cout << "Total Rectangle area: " << Rect.getArea() << endl;<br>
+   &nbsp;&nbsp;   Tri.setWidth(5);<br>
+   &nbsp;&nbsp;   Tri.setHeight(7);<br>
+   &nbsp;&nbsp;   // Print the area of the object.<br>
+   &nbsp;&nbsp;   cout << "Total Triangle area: " << Tri.getArea() << endl; <br>
+   &nbsp;&nbsp;   return 0;<br>
+   }<br>
+   </div>
+   When the above code is compiled and executed, it produces the following result -
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   
+   Total Rectangle area: 35
+   Total Triangle area: 17
+   </div>
+   <p>
+   You can see how an abstract class defined an interface in terms of getArea() and two other classes implemented same function but with different algorithm to calculate the area specific to the shape.</p>
+   
+   <p><b>Designing Strategy</b><br>
+   An object-oriented system might use an abstract base class to provide a common and standardized interface appropriate for all the external applications. Then, through inheritance from that abstract base class, derived classes are formed that operate similarly.<br><br>
+   The capabilities (i.e., the public functions) offered by the external applications are provided as pure virtual functions in the abstract base class. The implementations of these pure virtual functions are provided in the derived classes that correspond to the specific types of the application.</p>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

@@ -1,0 +1,279 @@
+   <h3><b>CLASSES & OBJECTS</b></h3>
+   <p>Java is an Object-Oriented Language. As a language that has the Object-Oriented feature, Java supports the following fundamental concepts -</p>
+   <ul>
+   
+      <li>Polymorphism</li>
+      <li>Inheritance</li>
+      <li>Encapsulation</li>
+      <li>Abstraction</li>
+      <li>Classes</li>
+      <li>Objects</li>
+      <li>Instance</li>
+      <li>Method</li>
+      <li>Message Passing</li>
+   </ul>
+   <p>In this chapter, we will look into the concepts - Classes and Objects.</p>
+   <ul>
+      <li><b>Object -</b> Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behaviors – wagging the tail, barking, eating. An object is an instance of a class.</li>
+      <li><b>Class -</b> A class can be defined as a template/blueprint that describes the behavior/state that the object of its type support.</li>
+   </ul>
+   <p><b>Objects in Java</b></p>
+   <ul>
+      <li>Let us now look deep into what are objects. If we consider the real-world, we can find many objects around us, cars, dogs, humans, etc. All these objects have a state and a behavior.</li>
+      <li>If we consider a dog, then its state is - name, breed, color, and the behavior is - barking, wagging the tail, running.</li>
+      <li>If you compare the software object with a real-world object, they have very similar characteristics.</li>
+      <li>Software objects also have a state and a behavior. A software object's state is stored in fields and behavior is shown via methods.</li>
+      <li>So in software development, methods operate on the internal state of an object and the object-to-object communication is done via methods.</li>
+   </ul>
+   <p><b>Classes in Java</b><br>
+   A class is a blueprint from which individual objects are created.<br><br>
+   
+   Following is a sample of a class.</br>
+   Example:-<br></p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   
+   public class Dog {<br>
+     &nbsp;&nbsp; String breed;<br>
+   int age;<br>
+     &nbsp;&nbsp; String color;<br>
+   void barking() {<br>
+      }<br>
+   void hungry() {<br>
+      }<br>
+   void sleeping() {<br>
+      }<br>
+   }<br>
+   </div>
+   <p>A class can contain any of the following variable types.</p>
+   <ol>
+      <li><b>Local variables -</b> Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and the variable will be destroyed when the method has completed.</li>
+      <li><b>Instance variables - </b>Instance variables are variables within a class but outside any method. These variables are initialized when the class is instantiated. Instance variables can be accessed from inside any method, constructor or blocks of that particular class.</li>
+      <li><b>Class variables - </b>Class variables are variables declared within a class, outside any method, with the static keyword.</li>
+   </ol>
+   <p>
+   A class can have any number of methods to access the value of various kinds of methods. In the above example, barking(), hungry() and sleeping() are methods.
+   
+   Following are some of the important topics that need to be discussed when looking into classes of the Java Language.</p>
+   
+   <p><b>Constructors</b></br>
+   When discussing about classes, one of the most important sub topic would be constructors. Every class has a constructor. If we do not explicitly write a constructor for a class, the Java compiler builds a default constructor for that class.<br><br>
+   
+   Each time a new object is created, at least one constructor will be invoked. The main rule of constructors is that they should have the same name as the class. A class can have more than one constructor.<br><br>
+   
+   Following is an example of a constructor -</br>
+   Example:-</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+   public class Puppy {<br>
+   &nbsp;&nbsp;public Puppy() { }<br>
+   &nbsp;&nbsp;public Puppy(String name) {<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;// This constructor has one parameter, name.<br>
+     &nbsp;&nbsp; }<br>
+   }<br>
+   </div>
+   <p>
+   Java also supports Singleton Classes where you would be able to create only one instance of a class.<br><br>
+   
+   Note - We have two different types of constructors. We are going to discuss constructors in detail in the subsequent chapters.</p>
+   
+   <p><b>Creating an Object</b><br><br>
+   
+   As mentioned previously, a class provides the blueprints for objects. So basically, an object is created from a class. In Java, the new keyword is used to create new objects.<br><br>
+   
+   There are three steps when creating an object from a class -</p>
+   <ol>
+      <li><b>Declaration - </b>A variable declaration with a variable name with an object type.</li>
+      <li><b>Instantiation -</b> The 'new' keyword is used to create the object.</li>
+      <li><b>Initialization - </b>The 'new' keyword is followed by a call to a constructor. This call initializes the new object.</li>
+   </ol>
+   <p>Following is an example of creating an object -<br><br>
+   
+   Example:-</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public class Puppy {<br>
+   &nbsp;&nbsp;public Puppy(String name) {<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;  // This constructor has one parameter, name.<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Passed Name is :" + name );<br>
+   &nbsp;&nbsp;   }<br>
+   &nbsp;&nbsp;public static void main(String []args) {<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;    // Following statement would create an object myPuppy<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; Puppy myPuppy = new Puppy( "tommy" );<br>
+      &nbsp;&nbsp;}<br>
+   }<br>
+   </div>
+   <p>
+   If we compile and run the above program, then it will produce the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Passed Name is :tommy
+   </div>
+   <p><b>Accessing Instance Variables and Methods</b><br>
+   Instance variables and methods are accessed via created objects. To access an instance variable, following is the fully qualified path -<br><br>
+   <div class="syntext">
+   /* First create an object */<br>
+   ObjectReference = new Constructor();<br><br>
+   
+   /* Now call a variable as follows */<br>
+   ObjectReference.variableName;<br><br>
+   
+   /* Now you can call a class method as follows */<br>
+   ObjectReference.MethodName();
+   </div>
+   <b>Example</b><br>
+   
+   This example explains how to access instance variables and methods of a class.</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   public class Puppy {<br>
+   &nbsp;&nbsp;intpuppyAge;<br>
+   
+   &nbsp;&nbsp;public Puppy(String name) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      // This constructor has one parameter, name.<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Name chosen is :" + name );<br>
+   &nbsp;&nbsp;   }<br><br>
+   
+   &nbsp;&nbsp;public void setAge( int age ) {<br>
+   &nbsp;&nbsp;puppyAge = age;<br>
+      }<br><br>
+   
+   &nbsp;&nbsp;publicintgetAge( ) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Puppy's age is :" + puppyAge );<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;returnpuppyAge;<br>
+      }<br><br>
+   
+   &nbsp;&nbsp;public static void main(String []args) {<br>
+   &nbsp;&nbsp; &nbsp;&nbsp;     /* Object creation */<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;   Puppy myPuppy = new Puppy( "tommy" );<br><br>
+   
+       &nbsp;&nbsp;&nbsp;&nbsp;  /* Call class method to set puppy's age */<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;myPuppy.setAge( 2 );<br><br>
+   
+     &nbsp;&nbsp;&nbsp;&nbsp;    /* Call another class method to get puppy's age */<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;myPuppy.getAge( );<br><br>
+   
+     &nbsp;&nbsp;&nbsp;&nbsp;    /* You can access instance variable as follows as well */<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Variable Value :" + myPuppy.puppyAge );<br>
+   &nbsp;&nbsp;   }<br>
+   }<br>
+   </div>
+   <p>If we compile and run the above program, then it will produce the following result -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   Name chosen is :tommy
+   Puppy's age is :2
+   Variable Value :2
+   </div>
+   
+   
+   
+   <p><b>Source File Declaration Rules</b><br>
+   As the last part of this section, let's now look into the source file declaration rules. These rules are essential when declaring classes, import statements and package statements in a source file.</p>
+   <ol> 
+      <li>There can be only one public class per source file.</li> 
+      <li>A source file can have multiple non-public classes.</li>
+      <li>The public class name should be the name of the source file as well which should be appended by .java at the end. For example: the class name is public class Employee{} then the source file should be as Employee.java.</li>
+      <li>If the class is defined inside a package, then the package statement should be the first statement in the source file.</li>
+      <li>If import statements are present, then they must be written between the package statement and the class declaration. If there are no package statements, then the import statement should be the first line in the source file.</li>
+      <li>Import and package statements will imply to all the classes present in the source file. It is not possible to declare different import and/or package statements to different classes in the source file.</li>
+      <li>Classes have several access levels and there are different types of classes; abstract classes, final classes, etc. We will be explaining about all these in the access modifiers chapter.</li>
+      <li>Apart from the above mentioned types of classes, Java also has some special classes called Inner classes and Anonymous classes.</li>
+   </ol>
+   <p><b>Java Package</b><br><br>
+   In simple words, it is a way of categorizing the classes and interfaces. When developing applications in Java, hundreds of classes and interfaces will be written, therefore categorizing these classes is a must as well as makes life much easier.
+   <br><br>
+   <b>Import Statements</b><br><br>
+   In Java if a fully qualified name, which includes the package and the class name is given, then the compiler can easily locate the source code or classes. Import statement is a way of giving the proper location for the compiler to find that particular class.<br><br>
+   
+   For example, the following line would ask the compiler to load all the classes available in directory java_installation/java/io -</p>
+   
+   <p>
+   <div class="syntext">
+   import java.io.*;</div>
+   A Simple Case Study<br>
+   For our case study, we will be creating two classes. They are Employee and EmployeeTest.<br><br>
+   
+   First open notepad and add the following code. Remember this is the Employee class and the class is a public class. Now, save this source file with the name Employee.java.<br><br>
+   
+   The Employee class has four instance variables - name, age, designation and salary. The class has one explicitly defined constructor, which takes a parameter.
+   <br><br>
+   Example:-</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;<br>
+   public class Employee {<br>
+   &nbsp;&nbsp;String name;<br>
+   &nbsp;&nbsp;int age;<br>
+   &nbsp;&nbsp;String designation;<br>
+   &nbsp;&nbsp;double salary;<br>
+   
+   &nbsp;&nbsp; // This is the constructor of the class Employee<br>
+   &nbsp;&nbsp;public Employee(String name) {<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br>
+   &nbsp;&nbsp; }<br>
+   
+   &nbsp;&nbsp;   // Assign the age of the Employee  to the variable age.<br>
+   &nbsp;&nbsp;public void empAge(intempAge) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;age = empAge;<br>
+     &nbsp;&nbsp; }<br>
+   
+      &nbsp;&nbsp;/* Assign the designation to the variable designation.*/<br>
+   &nbsp;&nbsp;public void empDesignation(String empDesig) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;designation = empDesig;<br>
+      }<br>
+   
+     &nbsp;&nbsp; /* Assign the salary to the variable	salary.*/<br>
+   &nbsp;&nbsp;public void empSalary(double empSalary) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;salary = empSalary;<br>
+      }<br>
+   
+    &nbsp;&nbsp;  /* Print the Employee details */<br>
+   &nbsp;&nbsp;public void printEmployee() {<br>
+   &nbsp;&nbsp;System.out.println("Name:"+ name );<br>
+   &nbsp;&nbsp;System.out.println("Age:" + age );<br>
+   &nbsp;&nbsp;System.out.println("Designation:" + designation );<br>
+   &nbsp;&nbsp;System.out.println("Salary:" + salary);<br>
+   &nbsp;&nbsp;   }<br>
+   }
+   </div>
+   <p>
+   As mentioned previously in this tutorial, processing starts from the main method. Therefore, in order for us to run this Employee class there should be a main method and objects should be created. We will be creating a separate class for these tasks.<br><br>
+   
+   Following is the EmployeeTest class, which creates two instances of the class Employee and invokes the methods for each object to assign values for each variable.<br><br>
+   
+   Save the following code in <b> EmployeeTest.java </b> file.</p>
+   <div class="shadow p-3 mb-5 bg-white rounded codeDiv"> 
+   import java.io.*;<br>
+   public class EmployeeTest {<br>
+   
+   &nbsp;&nbsp;public static void main(String args[]) {<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      /* Create two objects using constructor */<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      Employee empOne = new Employee("James Smith");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;      Employee empTwo = new Employee("Mary Anne");<br>
+   
+   &nbsp;&nbsp;&nbsp;&nbsp;      // Invoking methods for each object created<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empOne.empAge(26);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empOne.empDesignation("Senior Software Engineer");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empOne.empSalary(1000);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empOne.printEmployee();<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empTwo.empAge(21);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empTwo.empDesignation("Software Engineer");<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empTwo.empSalary(500);<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;empTwo.printEmployee();<br>
+   &nbsp;&nbsp;   }<br>
+   }<br>
+   </div>
+   <p>Now, compile both the classes and then run <b>EmployeeTest </b> to see the result as follows -</p>
+   <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+   <h4>Output:</h4>
+   C:\>javac Employee.java<br>
+   C:\>javac EmployeeTest.java<br>
+   C:\> java EmployeeTest<br>
+   Name:James Smith<br>
+   Age:26<br>
+   Designation:Senior Software Engineer<br>
+   Salary:1000.0<br>
+   Name:Mary Anne<br>
+   Age:21<br>
+   Designation:Software Engineer<br>
+   Salary:500.0<br>
+   </div>  
+   <div>
+ <p><b>For more clarification:-</b></p>
+</div>

@@ -1,0 +1,278 @@
+ <h3><b>OVERLOADING</b></h3>
+    <ul>
+    
+        <li>C++ allows you to specify more than one definition for a function name or an operator in the same scope, which is called function overloading and operator overloading respectively.</li>
+         <li>An overloaded declaration is a declaration that is declared with the same name as a previously declared declaration in the same scope, except that both declarations have different arguments and obviously different definition (implementation).</li>
+         <li>When you call an overloaded function or operator, the compiler determines the most appropriate definition to use, by comparing the argument types you have used to call the function or operator with the parameter types specified in the definitions. The process of selecting the most appropriate overloaded function or operator is called overload resolution.</li>
+    </ul>
+    <p><b>Function Overloading in C++</b><br>
+    &nbsp;&nbsp;You can have multiple definitions for the same function name in the same scope. The definition of the function must differ from each other by the types and/or the number of arguments in the argument list. You cannot overload function declarations that differ only by return type.<br><br>
+    Following is the example where same function print() is being used to print different data types -</p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+    
+    using namespace std;<br>
+    class printData {<br>
+      &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;   void print(int i) {<br>
+           &nbsp;&nbsp;&nbsp;&nbsp; cout << "Printing int: " << i << endl;<br>
+          &nbsp;&nbsp;}<br>
+          void print(double  f) {<br>
+           &nbsp;&nbsp; cout << "Printing float: " << f << endl;<br>
+          }<br>
+          void print(char* c) {<br>
+           &nbsp;&nbsp; cout << "Printing character: " << c << endl;<br>
+          }<br>
+    };<br>
+    int main(void) {<br>
+       &nbsp;&nbsp;printData pd;<br>
+      &nbsp;&nbsp; // Call print to print integer<br>
+      &nbsp;&nbsp; pd.print(5);<br>
+      &nbsp;&nbsp; // Call print to print float<br>
+      &nbsp;&nbsp; pd.print(500.263);<br>
+      &nbsp;&nbsp;// Call print to print character<br>
+      &nbsp;&nbsp; pd.print("Hello C++");<br>
+      &nbsp;&nbsp;return 0;<br>
+    }<br>
+    </div>
+     <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Printing int: 5<br>
+    Printing float: 500.263<br>
+    Printing character: Hello C++<br>
+    Operators Overloading in C++<br>
+    </div>
+    <p>&nbsp;&nbsp;You can redefine or overload most of the built-in operators available in C++. Thus, a programmer can use operators with user-defined types as well.<br>
+    &nbsp;&nbsp;Overloaded operators are functions with special names: the keyword "operator" followed by the symbol for the operator being defined. Like any other function, an overloaded operator has a return type and a parameter list.</p>
+    <p><b>Box operator+(const Box&);</b><br>
+    declares the addition operator that can be used to add two Box objects and returns final Box object. Most overloaded operators may be defined as ordinary non-member functions or as class member functions.<br><br>
+     In case we define above function as non-member function of a class then we would have to pass two arguments for each operand as follows -</p>
+    <p><b>Box operator+(const Box&, const Box&);</b><br>
+         Following is the example to show the concept of operator over loading using a member function. Here an object is passed as an argument whose properties will be accessed using this object, the object which will call this operator can be accessed using this operator as explained below -</p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+    
+    using namespace std;<br>
+    class Box {<br>
+     &nbsp;&nbsp;  public:<br>
+     &nbsp;&nbsp;     double getVolume(void) {<br>
+     &nbsp;&nbsp;        return length * breadth * height;<br>
+          }<br>
+          void setLength( double len ) {<br>
+            &nbsp;&nbsp; length = len;<br>
+          }<br>
+          void setBreadth( double bre ) {<br>
+            &nbsp;&nbsp; breadth = bre;<br>
+          }<br>
+          void setHeight( double hei ) {<br>
+            &nbsp;&nbsp; height = hei;<br>
+          }<br>
+          // Overload + operator to add two Box objects.<br>
+          Box operator+(const Box& b) {<br>
+             &nbsp;&nbsp;Box box;<br>
+             &nbsp;&nbsp;box.length = this->length + b.length;<br>
+             &nbsp;&nbsp;box.breadth = this->breadth + b.breadth;<br>
+             &nbsp;&nbsp;box.height = this->height + b.height;<br>
+             &nbsp;&nbsp;return box;<br>
+          }      <br>
+       private:<br>
+       &nbsp;&nbsp;   double length;      // Length of a box<br>
+        &nbsp;&nbsp;  double breadth;     // Breadth of a box<br>
+         &nbsp;&nbsp; double height;      // Height of a box<br>
+    };<br>
+    // Main function for the program<br>
+    int main() {<br>
+      &nbsp;&nbsp; Box Box1;                // Declare Box1 of type Box<br>
+       &nbsp;&nbsp;Box Box2;                // Declare Box2 of type Box<br>
+       &nbsp;&nbsp;Box Box3;                // Declare Box3 of type Box<br>
+       &nbsp;&nbsp;double volume = 0.0;     // Store the volume of a box here<br>
+       &nbsp;&nbsp;// box 1 specification<br>
+       &nbsp;&nbsp;Box1.setLength(6.0); <br>
+       &nbsp;&nbsp;Box1.setBreadth(7.0); <br>
+       &nbsp;&nbsp;Box1.setHeight(5.0);<br>
+       &nbsp;&nbsp;// box 2 specification<br>
+       &nbsp;&nbsp;Box2.setLength(12.0); <br>
+       &nbsp;&nbsp;Box2.setBreadth(13.0); <br>
+       &nbsp;&nbsp;Box2.setHeight(10.0);<br><br>
+       &nbsp;&nbsp;// volume of box 1<br>
+       &nbsp;&nbsp;volume = Box1.getVolume();<br>
+       &nbsp;&nbsp;cout << "Volume of Box1 : " << volume <<endl; <br>
+       &nbsp;&nbsp;// volume of box 2<br>
+       &nbsp;&nbsp;volume = Box2.getVolume();<br>
+       &nbsp;&nbsp;cout << "Volume of Box2 : " << volume <<endl;<br>
+       &nbsp;&nbsp;// Add two object as follows:<br>
+       &nbsp;&nbsp;Box3 = Box1 + Box2;<br>
+       &nbsp;&nbsp;// volume of box 3<br>
+       &nbsp;&nbsp;volume = Box3.getVolume();<br>
+       &nbsp;&nbsp;cout << "Volume of Box3 : " << volume <<endl;<br>
+       &nbsp;&nbsp;return 0;<br>
+    }<br>
+    </div>
+    When the above code is compiled and executed, it produces the following result -
+    <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Volume of Box1 : 210<br>
+    Volume of Box2 : 1560<br>
+    Volume of Box3 : 5400<br>
+    </div>
+    
+    <p><b>Overloadable/Non-overloadableOperators:</b>
+    Following is the list of operators which can be overloaded -</p>
+    
+    <table class="table table-striped table-dark">
+        <tr>
+            <td> +</td><td> -</td><td> *</td><td> /</td><td> %</td><td> ^</td>
+        </tr>
+        <tr>
+            <td>& </td><td> |</td><td>~ </td><td>! </td><td> ,</td><td>= </td>
+        </tr>
+        <tr>
+            <td>< </td><td> ></td><td><= </td><td>>= </td><td> ++</td><td>-- </td>
+        </tr>
+        <tr>
+            <td><< </td><td> >> </td><td>== </td><td> !=</td><td>&& </td><td>|| </td>
+        </tr>
+        <tr>
+            <td>+= </td><td> -=</td><td>/= </td><td> %=</td><td> %=</td><td> &=</td>
+        </tr>
+        <tr>
+            <td>|= </td><td>*= </td><td> <<=</td><td> >>=</td><td> []</td><td> ()</td>
+        </tr>
+        <tr>
+            <td>-> </td><td> ->* </td><td> new</td><td>new []</td><td> delete</td><td>delete[] </td>
+        </tr>
+    </table>
+    
+    <p><b>Following is the list of operators, which cannot be overloaded -<br>
+    ::	.*	.	?:</b></p>
+    
+         <p>Operator Overloading Examples<br>
+    Here are various operator overloading examples to help you in understanding the concept.</p>
+    <ol>
+    	<li>Unary Operators Overloading</li>
+    	<li>Binary Operators Overloading</li>
+    	<li>Relational Operators Overloading</li>
+    	<li>Input/Output Operators Overloading</li>
+    	<li>++ and -- Operators Overloading</li>
+    	<li>Assignment Operators Overloading</li>
+    	<li>Function call () Operator Overloading</li>
+    	<li>Subscripting [] Operator Overloading</li>
+    	<li>Class Member Access Operator -> Overloading</li>
+    </ol>
+    <h3><b>POLYMORPHISM</b></h3>
+    <ul>
+         <li>The word polymorphism means having many forms. Typically, polymorphism occurs when there is a hierarchy of classes and they are related by inheritance.</li>
+         <li>C++ polymorphism means that a call to a member function will cause a different function to be executed depending on the type of object that invokes the function.</li>
+         <li>Consider the following example where a base class has been derived by other two classes -</li></ul>
+    
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    #include &#60;iostream&#62;<br>
+     
+    using namespace std;<br>
+    class Shape {<br>
+      &nbsp;&nbsp; protected:<br>
+          &nbsp;&nbsp;int width, height;<br>
+          &nbsp;&nbsp; public:<br>
+          &nbsp;&nbsp;Shape( int a = 0, int b = 0){<br>
+          &nbsp;&nbsp;   width = a;<br>
+          &nbsp;&nbsp;   height = b;<br>
+          }<br>
+          int area() {<br>
+          &nbsp;&nbsp;   cout << "Parent class area :" <<endl;<br>
+          &nbsp;&nbsp;   return 0;<br>
+          }<br>
+    };<br>
+    class Rectangle: public Shape {<br>
+       &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;   Rectangle( int a = 0, int b = 0):Shape(a, b) { }<br>
+       &nbsp;&nbsp;       int area () { <br>
+       &nbsp;&nbsp;      cout << "Rectangle class area :" <<endl;<br>
+       &nbsp;&nbsp;      return (width * height); <br>
+          }<br>
+    };<br>
+    class Triangle: public Shape {<br>
+       &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;   Triangle( int a = 0, int b = 0):Shape(a, b) { }<br>
+       &nbsp;&nbsp;        int area () { <br>
+       &nbsp;&nbsp;      cout << "Triangle class area :" <<endl;<br>
+       &nbsp;&nbsp;      return (width * height / 2); <br>
+          }<br>
+    };<br>
+    // Main function for the program<br>
+    int main() {<br>
+       &nbsp;&nbsp;Shape *shape;<br>
+       &nbsp;&nbsp;Rectangle rec(10,7);<br>
+       &nbsp;&nbsp;Triangle  tri(10,5);<br>
+       &nbsp;&nbsp;// store the address of Rectangle<br>
+       &nbsp;&nbsp;shape = &rec;<br>
+       &nbsp;&nbsp;// call rectangle area.<br>
+       &nbsp;&nbsp;shape->area();<br>
+       &nbsp;&nbsp;// store the address of Triangle<br>
+       &nbsp;&nbsp;shape = &tri;<br>
+       &nbsp;&nbsp;// call triangle area.<br>
+       &nbsp;&nbsp;shape->area();<br>
+       &nbsp;&nbsp;return 0;<br>
+    }<br>
+    </div>
+    When the above code is compiled and executed, it produces the following result -
+    <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Parent class area :<br>
+    Parent class area :
+    </div>
+    <p>
+    The reason for the incorrect output is that the call of the function area() is being set once by the compiler as the version defined in the base class. This is called static resolution of the function call, or static linkage - the function call is fixed before the program is executed. This is also sometimes called early binding because the area() function is set during the compilation of the program.<br><br>
+    But now, let's make a slight modification in our program and precede the declaration of area() in the Shape class with the keyword virtual so that it looks like this -</p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+    class Shape {<br>
+       &nbsp;&nbsp;protected:<br>
+       &nbsp;&nbsp;   int width, height;<br>
+       &nbsp;&nbsp;    public:<br>
+       &nbsp;&nbsp;   Shape( int a = 0, int b = 0) {<br>
+       &nbsp;&nbsp;      width = a;<br>
+       &nbsp;&nbsp;      height = b;<br>
+          }<br>
+          virtual int area() {<br>
+       &nbsp;&nbsp;      cout << "Parent class area :" <<endl;<br>
+       &nbsp;&nbsp;      return 0;<br>
+          }<br>
+    };<br>
+    </div>
+    After this slight modification, when the previous example code is compiled and executed, it produces the following result -
+    <div class="shadow-lg p-3 mb-5 bg-white rounded outputDiv">
+    <h4>Output:</h4>
+    
+    Rectangle class area<br>
+    Triangle class area
+    </div>
+    <p>This time, the compiler looks at the contents of the pointer instead of it's type. Hence, since addresses of objects of tri and rec classes are stored in *shape the respective area() function is called.<br><br>
+    As you can see, each of the child classes has a separate implementation for the function area(). This is how polymorphism is generally used. You have different classes with a function of the same name, and even the same parameters, but with different implementations.</p>
+    
+         <p><b>Virtual Function</b>
+    A virtual function is a function in a base class that is declared using the keyword virtual. Defining in a base class a virtual function, with another version in a derived class, signals to the compiler that we don't  want static linkage for this function.<br><br>
+    What we do want is the selection of the function to be called at any given point in the program to be based on the kind of object for which it is called. This sort of operation is referred to as dynamic linkage, or late binding.</p>
+         <p><b>Pure Virtual Functions</b>
+    It is possible that you want to include a virtual function in a base class so that it may be redefined in a derived class to suit the objects of that class, but that there is no meaningful definition you could give for the function in the base class.<br><br>
+    We can change the virtual function area() in the base class to the following -</p>
+    <div class="shadow p-3 mb-5 bg-white rounded codeDiv">
+     
+    
+    class Shape {<br>
+       &nbsp;&nbsp;protected:<br>
+       &nbsp;&nbsp;   int width, height;<br>
+       &nbsp;&nbsp;public:<br>
+       &nbsp;&nbsp;   Shape(int a = 0, int b = 0) {<br>
+       &nbsp;&nbsp;      width = a;<br>
+       &nbsp;&nbsp;      height = b;<br>
+          }<br>
+                // pure virtual function<br>
+          virtual int area() = 0;<br>
+    };<br>
+    </div>
+    <p>The = 0 tells the compiler that the function has no body and above virtual function will be called pure virtual function.</p>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>

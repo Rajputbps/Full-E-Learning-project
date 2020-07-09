@@ -1,0 +1,53 @@
+<h3><b>FUNDAMENTALS OF C</b></h3>
+<p> &nbsp; &nbsp;C programming is a general-purpose, procedural, imperative computer programming language developed in 1972 by Dennis M. Ritchie at the Bell Telephone Laboratories to develop the UNIX operating system. </p>
+<p>&nbsp; &nbsp; C is the most widely used computer language. It keeps fluctuating at number one scale of popularity along with Java programming language, which is also equally popular and most widely used among modern software programmers.</p>
+
+<h4>Why to Learn C Programming?</h4>
+<p>&nbsp; &nbsp;C programming language is a MUST for students and working professionals to become a great Software Engineer specially when they are working in Software Development Domain. There are some of the key advantages of learning C Programming:</p>
+
+<ul>
+<li>Easy to learn</li>
+<li>Structured language</li>
+<li>It produces efficient programs</li>
+<li>It can handle low-level activities</li>
+<li>It can be compiled on a variety of computer platforms</li>
+</ul>
+<h4>Facts about C</h4>
+<ul>
+<li>C was invented to write an operating system called UNIX.</li>
+<li>C is a successor of B language which was introduced around the early 1970s.</li>
+<li>The language was formalized in 1988 by the American National Standard Institute (ANSI).</li>
+<li>The UNIX OS was totally written in C.</li>
+<li>Today C is the most widely used and popular System Programming Language.</li>
+<li>Most of the state-of-the-art software have been implemented using C.</li>
+<li>Today's most popular Linux OS and RDBMS MySQL have been written in C.</li>	
+</ul>
+<h4>Hello World using C Programming</h4>
+<p>&nbsp; &nbsp;Just to give you a little excitement about C programming, I'm going to give you a small conventional C Programming Hello World program, You can try it using Demo link.</p>
+<p class="shadow p-3 mb-5 bg-white rounded">
+#include &#60;stdio.h&#62; 
+int main() {<br>
+   /* my first program in C */<br>
+   printf("Hello, World! \n");<br>
+     return 0;<br>
+}
+</p>
+<h4>Applications of C Programming</h4>
+
+<p>&nbsp; &nbsp;C was initially used for system development work, particularly the programs that make-up the operating system. C was adopted as a system development language because it produces code that runs nearly as fast as the code written in assembly language. Some examples of the use of C are -</p>
+<ul>
+<li>Operating Systems</li>
+<li>Language Compilers</li>
+<li>Language Compilers</li>
+<li>Text Editors</li>
+<li>Print Spoolers</li>
+<li>Network Drivers</li>
+<li>Modern Programs</li>
+<li>Databases</li>
+<li>Language Interpreters</li>
+<li>Utilities</li>
+
+</ul>
+<div>
+ <p><b>For more clarification:-</b></p>
+</div>
